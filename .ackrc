@@ -1,0 +1,9 @@
+--ignore-case
+
+--sort-files
+--follow
+--color
+--group
+
+--type-set=tt2=.tt2
+--type-add=js=.bemhtml
