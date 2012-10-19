@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 cd "$(dirname "$0")"
 git pull
 function doIt() {
