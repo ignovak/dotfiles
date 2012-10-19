@@ -4,6 +4,19 @@
 --follow
 --color
 --group
+--all
+
+# Rails
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=vendor
+--ignore-dir=public/generated
 
 --type-set=tt2=.tt2
 --type-add=js=.bemhtml
+
+--type-add=ruby=.haml
+--type-add=ruby=.sass
+--type-add=ruby=.scss
+
+--type-add=html=.tmpl

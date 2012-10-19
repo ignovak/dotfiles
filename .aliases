@@ -1,0 +1,41 @@
+# Utils
+alias ip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
+
+alias la='ls -aG'
+alias ll='ls -laG'
+alias grep='grep --color=auto'
+
+# Git
+alias ga='git add '
+alias gbr='git branch'
+alias gc='git commit -am '
+alias gst='git status'
+
+hub_path=`which hub`
+[[ -f $hub_path ]] && alias git=$hub_path
+
+# SVN
+alias sst='svn status'
+alias sup='svn update'
+alias sci='svn commit -m'
+sdi()
+{
+    svn diff $@ | colordiff
+}
+
+# Screen sessions
+alias ssvn='screen -dR svn'
+alias smake='screen -dR gmake'
+alias slog='screen -dR log'
+alias sall='screen -dR all'
+
+alias phil='ssh philip1'
+alias leon='ssh leon02'
+
+alias zelo-update='ssh -i ~/.ssh/zelo-update kaa@zelo'
+alias zelo-restart='ssh -i ~/.ssh/zelo-restart kaa@zelo'
+
+# alias cssmake='touch pages-desktop/search/search.deps.js && gmake -j pages-desktop/search/_*.css && rm pages-desktop/search/all/_all.priv.js && gmake -j pages-desktop/search/all/_all.priv.js'
+# alias bemhtmlmake='touch pages-desktop/search/search.deps.js && gmake -j pages-desktop/search/all/_all.bemhtml.js'
+# alias privmake='rm pages-desktop/search/all/_all.priv.js && gmake -j pages-desktop/search/all/_all.priv.js'
+

@@ -1,39 +1,40 @@
+; email = bezengi@gmail.com
 [user]
-	name = 'Igor Novak'
-	email = vorian@yandex-team.ru
+    name = 'Igor Novak'
+    email = vorian@yandex-team.ru
 
 [core]
-	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [color]
-	diff = yes
-	ui = auto
-	# ui = true
+    diff = yes
+    ui = auto
+    # ui = true
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 [color "diff"]
-	meta = yellow
-	frag = magenta
-	old = red
-	new = green
-	whitespace = red reverse
+    meta = yellow
+    frag = magenta
+    old = red
+    new = green
+    whitespace = red reverse
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	di = diff
-	dc = diff --cached
-	lg = log -p
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	ls = ls-files
-	# Show files ignored by git:
-	ign = ls-files -o -i --exclude-standard
+    br = branch
+    ci = commit
+    co = checkout
+    dc = diff --cached
+    di = diff
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    # Show files ignored by git:
+    ign = ls-files -o -i --exclude-standard
+    st = status
