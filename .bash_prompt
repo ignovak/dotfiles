@@ -32,12 +32,3 @@ export PURPLE
 export WHITE
 export BOLD
 export RESET
-
-# http://habrahabr.ru/post/153871/
-export LESS_TERMCAP_mb=$'\E[33m'
-export LESS_TERMCAP_md=$'\E[31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[42;30m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[32m'
-export LESS_TERMCAP_ue=$'\E[0m'
