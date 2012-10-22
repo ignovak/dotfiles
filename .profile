@@ -12,16 +12,6 @@ export BLOCKSIZE=K
 
 if [ -x /usr/games/fortune ] ; then /usr/games/fortune freebsd-tips ; fi
 
-export PATH=$HOME/node_modules/.bin:$HOME/bin:$PATH:/sbin:/bin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:/Berkanavt/bin:/Berkanavt/bin/scripts
-export NODE_PATH=/usr/local/lib/node_modules
-
-export EDITOR=vim
-export PAGER=less
-export HISTSIZE=20000
-
-defaults write com.apple.finder AppleShowAllFiles TRUE
-killall Finder
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -40,6 +30,7 @@ then export PS1="$HOST:\w $ "
 else
     export PS1="$HOST[$SCREEN_SESSION_NAME]: \w $ "
 fi
+unset HOST
 
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
@@ -58,3 +49,4 @@ fi
 
 
 [[ -d "wc1" ]] && cd wc1/web
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function

@@ -1,0 +1,21 @@
+export PATH=$HOME/node_modules/.bin:$HOME/bin:$PATH:/sbin:/bin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:/Berkanavt/bin:/Berkanavt/bin/scripts
+export NODE_PATH=/usr/local/lib/node_modules
+
+export EDITOR=vim
+export PAGER=less
+
+# http://habrahabr.ru/post/153871/
+export LESS_TERMCAP_mb=$MAGENTA
+export LESS_TERMCAP_md=$ORANGE
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[42;30m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[32m'
+export LESS_TERMCAP_ue=$'\E[0m'
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+# Make some commands not show up in history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
