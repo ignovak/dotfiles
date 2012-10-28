@@ -46,20 +46,3 @@ sdi()
 {
     svn diff $@ | colordiff
 }
-
-# Screen sessions
-alias ssvn='screen -dR svn'
-alias smake='screen -dR gmake'
-alias slog='screen -dR log'
-alias sall='screen -dR all'
-
-alias phil='ssh philip1'
-alias leon='ssh leon02'
-
-alias zelo-update='ssh -i ~/.ssh/zelo-update kaa@zelo'
-alias zelo-restart='ssh -i ~/.ssh/zelo-restart kaa@zelo'
-
-# alias cssmake='touch pages-desktop/search/search.deps.js && gmake -j pages-desktop/search/_*.css && rm pages-desktop/search/all/_all.priv.js && gmake -j pages-desktop/search/all/_all.priv.js'
-# alias bemhtmlmake='touch pages-desktop/search/search.deps.js && gmake -j pages-desktop/search/all/_all.bemhtml.js'
-# alias privmake='rm pages-desktop/search/all/_all.priv.js && gmake -j pages-desktop/search/all/_all.priv.js'
-

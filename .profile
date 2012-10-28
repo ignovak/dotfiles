@@ -47,6 +47,4 @@ fi
 # esac
 # export PS1="${SCREENTITLE}[\u@\h \W]\$ "
 
-
-[[ -d "wc1" ]] && cd wc1/web
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
