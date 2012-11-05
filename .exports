@@ -10,7 +10,7 @@ export PS1="`whoami`@`hostname | sed 's/\..*//'`:\w > "
 
 # http://habrahabr.ru/post/153871/
 export LESS_TERMCAP_mb=$MAGENTA
-export LESS_TERMCAP_md=$ORANGE
+# export LESS_TERMCAP_md=$ORANGE
 export LESS_TERMCAP_me=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[42;30m'
 export LESS_TERMCAP_se=$'\E[0m'
