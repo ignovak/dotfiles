@@ -20,8 +20,6 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 unset file
 
-export LANG=ru_RU.UTF-8
-
 # export PS1="`whoami`@`hostname | sed 's/\..*//'`:\w > "
 HOST=`hostname | sed 's/\([a-z0-9]*\).*/\1/'`
 SCREEN_SESSION_NAME=`echo ${STY} | sed 's/[0-9]*\.//'`
@@ -35,6 +33,26 @@ unset HOST
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
+
+# Create a new directory and enter it
+function d() {
+    mkdir -p "$@" && cd "$@"
+}
+
+# Determine size of a file or total size of a directory
+function fs() {
+    if du -b /dev/null > /dev/null 2>&1; then
+        local arg=-sbh
+    else
+        local arg=-sh
+    fi
+    if [[ -n "$@" ]]; then
+        du $arg -- "$@"
+    else
+        du $arg .[^.]* *
+    fi
+}
+
 
 # # command prompt
 # case $TERM in

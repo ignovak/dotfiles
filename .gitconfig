@@ -4,6 +4,7 @@
 
 [core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    editor=/usr/bin/vim
 
 [color]
     diff = yes
@@ -31,6 +32,7 @@
     dc = diff --cached
     di = diff
     lg = log -p
+    lod = log --graph --decorate --format='%h %ad %s' --date=short
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
