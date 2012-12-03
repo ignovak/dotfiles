@@ -1,5 +1,4 @@
-export PATH=$HOME/node_modules/.bin:$HOME/bin:$PATH:/sbin:/bin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin:/usr/local/sbin:/Berkanavt/bin:/Berkanavt/bin/scripts
-export NODE_PATH=/usr/local/lib/node_modules
+export PATH=$HOME/bin:$PATH:$HOME/node_modules/.bin:
 
 export EDITOR=vim
 export PAGER=less
