@@ -29,6 +29,8 @@ alias la='ls -aG'
 alias ll='ls -laG'
 alias grep='grep --color=auto'
 
+alias e=$EDITOR
+
 # Git
 alias ga='git add '
 alias gbr='git branch'
