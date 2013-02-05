@@ -29,6 +29,7 @@
     br = branch
     ci = commit
     co = checkout
+    cp = cherry-pick
     dc = diff --cached
     di = diff
     lg = log -p

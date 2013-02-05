@@ -1,4 +1,5 @@
 export PATH=$HOME/bin:$PATH:$HOME/node_modules/.bin:
+export NODE_PATH=/usr/local/lib/node_modules
 
 export EDITOR=vim
 export PAGER=less
