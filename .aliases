@@ -30,6 +30,7 @@ alias ll='ls -laG'
 alias grep='grep --color=auto'
 
 alias e=$EDITOR
+alias es='vim -c"sy off"'
 
 # Git
 alias ga='git add '
