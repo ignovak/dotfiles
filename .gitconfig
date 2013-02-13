@@ -26,17 +26,21 @@
     untracked = cyan
 
 [alias]
+    st = status -sb
     br = branch
-    ci = commit
     co = checkout
-    cp = cherry-pick
-    dc = diff --cached
     di = diff
+    dc = diff --cached
+    ds = diff --staged
+    ci = commit
+    amend = commit --amend -C HEAD
+    undo = reset --soft HEAD^
+    cp = cherry-pick
     lg = log -p
     lod = log --graph --decorate --format='%h %ad %s' --date=short
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    ls = ls-files
+    ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short
+    standup = log --since '1 day ago' --oneline --author <YOUREMAIL>
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
-    st = status
