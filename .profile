@@ -24,9 +24,9 @@ unset file
 HOST=`hostname | sed 's/\([a-z0-9]*\).*/\1/'`
 SCREEN_SESSION_NAME=`echo ${STY} | sed 's/[0-9]*\.//'`
 if [[ $SCREEN_SESSION_NAME == '' ]]
-then export PS1="$HOST:\w $ "
+then export PS1="$HOST:\w╰─ "
 else
-    export PS1="$HOST[$SCREEN_SESSION_NAME]: \w $ "
+    export PS1="$HOST[$SCREEN_SESSION_NAME]: \w╰─ "
 fi
 unset HOST
 
