@@ -53,6 +53,10 @@ function fs() {
     fi
 }
 
+_expand()
+{
+    return 0;
+}
 
 # # command prompt
 # case $TERM in
