@@ -3,7 +3,7 @@
 	email = vorian@yandex-team.ru
 
 [core]
-    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
 
 [branch]
     autosetuprebase = always
@@ -42,7 +42,7 @@
     lod = log --graph --decorate --format='%h %ad %s' --date=short
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    ls = log --pretty=format:"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]" --decorate --date=short
+    hist = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches --all
     standup = log --since '1 day ago' --oneline --author <YOUREMAIL>
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard

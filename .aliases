@@ -32,20 +32,32 @@ alias grep='grep --color=auto'
 alias e=$EDITOR
 alias es='vim -c"sy off"'
 
+alias g1='git log -1'
+alias s1='svn log -l1'
+
 # Git
-alias ga='git add '
-alias gbr='git branch'
-alias gc='git commit -am '
-alias gst='git status'
+alias ga='git add'
+alias gb='git branch -a'
+alias gc='git commit -am'
+alias gd='git di'
+alias gdc='git di --cached'
+alias gds='git di --staged'
+alias gm='git merge --no-ff'
+alias gs='git st'
+alias gl='git lol'
+alias gp='git pull --rebase'
+alias gt='git tag'
+alias gr='git remote -v'
+alias gh='git hist'
 
 hub_path=`which hub`
 [[ -f $hub_path ]] && alias git=$hub_path
 
 # SVN
-alias sst='svn status'
+alias st='svn st'
 alias sup='svn update'
 alias sci='svn commit -m'
-sdi()
+sd()
 {
-    svn diff $@ | colordiff
+    svn di $@ | colordiff
 }
