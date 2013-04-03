@@ -1,8 +1,15 @@
 [core]
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
 
+[merge]
+	tool = vimdiff
+	log = true
+
 [branch]
 	autosetuprebase = always
+
+[push]
+	default = current
 
 [color]
 	diff = yes
@@ -37,9 +44,24 @@
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	hist = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches --all
+	rb = rebase
 	ls = ls-files
+	am = commit --amend
 	amend = commit --amend -C HEAD
 	undo = reset --soft HEAD^
 	standup = log --since '1 day ago' --oneline --author <YOUREMAIL>
 	# Show files ignored by git:
 	ign = ls-files -o -i --exclude-standard
+
+[diff]
+	noprefix = true
+
+[url "git@github.com:"]
+	pushInsteadOf = "gh:"
+	pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+	insteadOf = "gh:"
+
+[help]
+	autocorrect = 1
