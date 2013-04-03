@@ -61,3 +61,27 @@ sd()
 {
     svn di $@ | colordiff
 }
+
+all()
+{
+    if [ `basename $PWD` == 'touch' ]
+    then
+        e pages-touch/search/all/_all.ru.priv.js
+    elif [ `basename $PWD` == 'mischandlers' ]
+    then
+        e pages-desktop/error/_error.priv.js
+    else
+        es pages-desktop/search/all/_all.priv.js
+    fi
+}
+
+yxw()
+{
+    if [ -z `pwd | grep hol/arkanavt` ]
+    then
+        cd `pwd | grep -o '/home/[a-z]*/[a-z0-9]*'`
+    else
+        cd /hol/arkanavt
+    fi
+    cd report/templates/YxWeb
+}

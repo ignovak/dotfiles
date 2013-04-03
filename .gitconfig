@@ -5,8 +5,15 @@
 [core]
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
 
+[merge]
+    tool = vimdiff
+    log = true
+
 [branch]
     autosetuprebase = always
+
+[push]
+    default = current
 
 [color]
     diff = yes
@@ -28,7 +35,7 @@
     untracked = cyan
 
 [alias]
-    st = status -sb
+    st = status
     br = branch -a
     co = checkout
     di = diff
@@ -46,3 +53,20 @@
     standup = log --since '1 day ago' --oneline --author <YOUREMAIL>
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
+
+[url "git@github.yandex-team.ru:"]
+    pushInsteadOf = "ght:"
+    pushInsteadOf = "git://github.yandex-team.ru/"
+
+[url "git://github.yandex-team.ru/"]
+    insteadOf = "ght:"
+
+[url "git@github.com:"]
+    pushInsteadOf = "gh:"
+    pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+    insteadOf = "gh:"
+
+[help]
+	autocorrect = 1
