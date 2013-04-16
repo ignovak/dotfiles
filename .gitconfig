@@ -54,6 +54,9 @@
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
 
+[diff]
+    noprefix = true
+
 [url "git@github.yandex-team.ru:"]
     pushInsteadOf = "ght:"
     pushInsteadOf = "git://github.yandex-team.ru/"
