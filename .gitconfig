@@ -42,6 +42,7 @@
     dc = diff --cached
     ds = diff --staged
     ci = commit
+    am = commit --amend
     amend = commit --amend -C HEAD
     undo = reset --soft HEAD^
     cp = cherry-pick
