@@ -20,6 +20,8 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 unset file
 
+source ~/dotfiles/git-completion.bash
+
 # export PS1="`whoami`@`hostname | sed 's/\..*//'`:\w > "
 HOST=`hostname | sed 's/\([a-z0-9]*\).*/\1/'`
 SCREEN_SESSION_NAME=`echo ${STY} | sed 's/[0-9]*\.//'`

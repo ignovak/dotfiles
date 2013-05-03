@@ -47,6 +47,7 @@
     undo = reset --soft HEAD^
     cp = cherry-pick
     lg = log -p
+    rb = rebase
     lod = log --graph --decorate --format='%h %ad %s' --date=short
     lod = log --graph --decorate --format='%C(yellow)%h %Cblue%d %Cred%ad %Creset%s' --date=short
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
