@@ -122,6 +122,8 @@ set showmatch               " Show matching brackets
 set matchpairs+=<:>         " Make < and > match as well
 
 " Localization
+" Load russian spell files
+:silent ![ -f ~/.vim/spell/ru.utf-8.spl ] || wget --no-check-certificate https://github.com/klen/.vim/raw/master/spell/ru.utf-8.spl https://github.com/klen/.vim/raw/master/spell/ru.utf-8.sug -P ~/.vim/spell/
 set langmenu=none            " Always use english menu
 set keymap=russian-jcukenwin " Alternative keymap
 highlight lCursor guifg=NONE guibg=Cyan
