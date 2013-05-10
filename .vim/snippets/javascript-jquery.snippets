@@ -1,0 +1,302 @@
+snippet $
+	$('${1}')${2}
+snippet add
+	add('${1}')${2}
+snippet addcl
+	addClass('${1}')${2}
+snippet after
+	after('${1}')${2}
+snippet ajax
+	$.ajax({
+		url: '${1}',
+		type: '${2:POST}',
+		dataType: '${3:json}',
+		data: ${4:{}},
+		complete: function (jqXHR, textStatus) {
+			${5}
+		},
+		success: function (data, textStatus, jqXHR) {
+			${6}
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			${7}
+		}
+	});
+snippet ajaxcomplete
+	.ajaxComplete(function (${1:e}, xhr, settings) {
+		${2}
+	});
+snippet ajaxerror
+	.ajaxError(function (${1:e}, xhr, settings, thrownError) {
+		${2}
+	});
+snippet get
+	$.get('${1:/url}', function(${2:data}) {
+		${4}
+	}${3:, 'text'});
+snippet post
+	$.post('${1:/url}', ${2:params}, function(${3:data}) {
+		${5}
+	}${4:, 'text'});
+snippet getjson
+	$.getJSON('${1:/url}', function(${2:data}) {
+		${3}
+	});
+snippet getscr
+	$.getScript('${1:somescript.js}', function() {
+		${2}
+	});
+snippet ajaxgetif
+	$.getIfModified('${1:/test/test.cgi}', function(data) {
+		${2:alert( "Data loaded: " + data ) //optional stuff to do after get;}
+	});
+snippet ajaxprefilter
+	$.ajaxPrefilter(function (${1:options}, ${2:originalOptions}, jqXHR) {
+		${3: // Modify options, control originalOptions, store jqXHR, etc}
+	});
+snippet ajaxsend
+	.ajaxSend(function(${1:request, settings}) {
+		${2};
+	});
+snippet ajaxsetup
+	$.ajaxSetup({
+		url: "${1:mydomain.com/url}",
+		type: "${2:POST}",
+		dataType: "${3:xml/html/script/json}",
+		data: $.param( $("${4:Element or Expression}") ),
+		complete: function (jqXHR, textStatus) {
+			${5:// callback}
+		},
+		success: function (data, textStatus, jqXHR) {
+			${6:// success callback}
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			${7:// error callback}
+		}
+	});
+snippet ajaxstart
+	$.ajaxStart(function() {
+		${1};
+	});
+snippet ajaxstop
+	$.ajaxStop(function() {
+		${1};
+	});
+snippet ajaxsuccess
+	$.ajaxSuccess(function() {
+		${1};
+	});
+snippet andself
+	.andSelf()
+snippet animate
+	animate({${1:param1: value1, param2: value2}}, ${2:speed})${3}
+snippet app
+	append('${1}')${2}
+snippet appto
+	appendTo(${1})${2}
+snippet attr
+	attr(${1}, ${2})${3}
+snippet attrs
+	attr({
+		${1}
+	})${2}
+snippet before
+	before('${1:Some text <b>and bold!</b>}')${2}
+snippet C
+	$.Callbacks()${1}
+snippet Cadd
+	${1:callbacks}.add(${2:callbacks})${3}
+snippet Cdis
+	${1:callbacks}.disable()${2}
+snippet Cempty
+	${1:callbacks}.empty()${2}
+snippet Cfire
+	${1:callbacks}.fire(${2:args})${3}
+snippet Cfired
+	${1:callbacks}.fired()${2}
+snippet Cfirew
+	${1:callbacks}.fireWith(${2:this}, ${3:args})${4}
+snippet Chas
+	${1:callbacks}.has(${2:callback})${3}
+snippet Clock
+	${1:callbacks}.lock()${2}
+snippet Clocked
+	${1:callbacks}.locked()${2}
+snippet Crem
+	${1:callbacks}.remove(${2:callbacks})${3}
+snippet change
+	change(function() {
+		${1}
+	});
+snippet children
+	children('${1}')${2}
+snippet clearq
+	${1:obj}.clearQueue(${2:'queue name'})${3}
+snippet contains
+	$.contains(${1:container}, ${2:contents});
+snippet csshooks
+	$.cssHooks['${1:CSS prop}'] = {
+		get: function (elem, computed, extra) {
+			${2: // handle getting the CSS property}
+		},
+		set: function (elem, value) {
+			${3: // handle setting the CSS value}
+		}
+snippet D
+	$.Deferred()${1}
+snippet Dalways
+	${1:deferred}.always(${2:callbacks})${3}
+snippet Ddone
+	${1:deferred}.done(${2:callbacks})${3}
+snippet Dfail
+	${1:deferred}.fail(${2:callbacks})${3}
+snippet Disrej
+	${1:deferred}.isRejected()${2}
+snippet Disres
+	${1:deferred}.isResolved()${2}
+snippet Dnotify
+	${1:deferred}.notify(${2:args})${3}
+snippet Dnotifyw
+	${1:deferred}.notifyWith(${2:this}, ${3:args})${4}
+snippet Dpipe
+	${1:deferred}.then(${2:doneFilter}, ${3:failFilter}, ${4:progressFilter})${5}
+snippet Dprog
+	${1:deferred}.progress(${2:callbacks})${3}
+snippet Dprom
+	${1:deferred}.promise(${2:target})${3}
+snippet Drej
+	${1:deferred}.reject(${2:args})${3}
+snippet Drejw
+	${1:deferred}.rejectWith(${2:this}, ${3:args})${4}
+snippet Dres
+	${1:deferred}.resolve(${2:args})${3}
+snippet Dresw
+	${1:deferred}.resolveWith(${2:this}, ${3:args})${4}
+snippet Dstate
+	${1:deferred}.state()${2}
+snippet Dthen
+	${1:deferred}.then(${2:doneCallbacks}, ${3:failCallbacks}, ${4:progressCallbacks})${5}
+snippet Dwhen
+	$.when(${1:deferreds})${2}
+snippet delay
+	${1:obj}.delay('${2:slow/400/fast}'${3:, 'queue name'})${4}
+snippet deq
+	${1:obj}.dequeue(${2:'queue name'})${3}
+snippet deqq
+	$.dequeue('${1:selector expression}'${2:, 'queue name'})${3}
+snippet detach
+	${1:obj}.detach('${2:selector expression}')${3}
+snippet die
+	${1:obj}.die(${2:event}, ${3:handler})${4}
+snippet eltrim
+	$.trim('${1:string}')${2}
+snippet find
+	find('${1}')${2}
+snippet hover
+	hover(function() {
+		${1}
+	}, function() {
+		${2}
+	});
+snippet insa
+	insertAfter(${1})${2}
+snippet insb
+	insertBefore(${1})${2}
+snippet loadf
+	<+obj+>.load('<+/path/to/file.htm+>', { <+<+param1+>: "<+value1+>", <+param2+>: "<+value2+>"+> }, function() {
+		<+// Stuff to do after the page is loaded+>
+	});
+snippet loadif
+	<+obj+>.loadIfModified('<+/path/to/file.htm+>', { <+<+param1+>: "<+value1+>", <+param2+>: "<+value2+>"+> }, function() {
+		<+// Stuff to do after the page is loaded+>
+	});
+snippet mdown
+	mousedown(function() {
+		${1}
+	});
+snippet mmove
+	mousemove(function() {
+		${1}
+	});
+snippet mout
+	mouseout(function() {
+		${1}
+	});
+snippet mover
+	mouseover(function() {
+		${1}
+	});
+snippet mup
+	mouseup(function() {
+		${1}
+	});
+snippet on
+	on('${1}', function(${2:e}) {
+		${3}
+	});
+snippet one
+	one('${1:event name}', function(${2:event}) {
+		${3}
+	});
+snippet prepend
+	prepend('${1:Some text <b>and bold!</b>}')${2}
+snippet prependto
+	prependTo('${1:selector}')${2}
+snippet ready
+	$(function() {
+		${1}
+	});
+snippet rem
+	remove()${1}
+snippet remat
+	removeAttr('${1}')${2}
+snippet remcl
+	removeClass('${1}')${2}
+snippet reset
+	reset(function() {
+		${1}
+	});
+snippet sdown
+	slideDown('${1:slow/400/fast}')${2}
+snippet sdownc
+	slideDown('${1:slow/400/fast}', function() {
+		${2};
+	});
+snippet sib
+	siblings('${1:selector}')${2}
+snippet stog
+	slideToggle('${1:slow/400/fast}')${2}
+snippet stop
+	stop(${1:true, true})${2}
+snippet sup
+	slideUp('${1:slow/400/fast}')${2}
+snippet supc
+	slideUp('${1:slow/400/fast}', function() {
+		${2};
+	});
+snippet tog
+	toggle(function() {
+		${1}
+	}, function() {
+		${2}
+	});
+snippet togcl
+	toggleClass('${1:classname}')${2}
+snippet togsh
+	toggle('${1:slow/400/fast}')${2}
+snippet trig
+	trigger('${1:event name}')${2}
+snippet val
+	val('${1:text}')${2}
+snippet width
+	width(${1:integer})${2}
+snippet wrap
+	wrap('${1:&lt;div class="extra-wrapper"&gt;&lt;/div&gt;}')${2}
+snippet test
+	test('${1}', function() {
+		${2}
+	});
+snippet async
+	asyncTest('${1}', function() {
+		${2}
+	});

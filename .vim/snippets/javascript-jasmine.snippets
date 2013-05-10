@@ -1,0 +1,80 @@
+snippet aft
+	afterEach(function() { 
+		${1} 
+	}
+snippet any
+	jasmine.any(${1})
+snippet bef
+	beforeEach(function() {
+		${1}
+	});
+snippet des
+	describe('${1}', function() {
+		${2}
+	});
+snippet notd
+	expect(${1}).not.toBeDefined();${2}
+snippet notf
+	expect(${1}).not.toBeFalsy();${2}
+snippet notn
+	expect(${1}).not.toBeNull();${2}
+snippet nott
+	expect(${1}).not.toBeTruthy();${2}
+snippet notc
+	expect(${1}).not.toContain(${2});${3}
+snippet note
+	expect(${1}).not.toEqual(${2});${3}
+snippet notm
+	expect(${1}).not.toBeDefined();${2}
+snippet notx
+	expect(${1}).not;${2}
+snippet ed
+	expect(${1}).toBeDefined();${2}
+snippet ef
+	expect(${1}).toBeFalsy();${2}
+snippet en
+	expect(${1}).toBeNull();${2}
+snippet et
+	expect(${1}).toBeTruthy();${2}
+snippet ec
+	expect(${1}).toContain(${2});${3}
+snippet ee
+	expect(${1}).toEqual(${2});${3}
+snippet em
+	expect(${1}).toMatch(${2});${3}
+snippet escw
+	expect(${1}).wasCalledWith(${2});${3}
+snippet esc
+	expect(${1}).wasCalled();${2}
+snippet notscw
+	expect(${1}).wasNotCalledWith(${2});${3}
+snippet notsc
+	expect(${1}).wasNotCalled();${3}
+snippet ex
+	expect(${1});${2}
+snippet it
+	it('${1}', function() {
+		${2}
+	});
+snippet ru
+	runs(function() {
+		${1}
+	});${2}
+snippet scf
+	spyOn(${1}, '${2}').andCallFake(${3});${4}
+snippet sct
+	spyOn(${1}, '${2}').andCallThrough();${3}
+snippet sr
+	spyOn(${1}, '${2}').andReturn(${3});${4}
+snippet st
+	spyOn(${1}, '${2}').andThrow(${3});${4}
+snippet s
+	spyOn(${1}, '${2}');${3}
+snippet wa
+	waits(${1});${2}
+snippet wf
+	waitsFor(function() {
+		${1}
+	});${2}
+snippet lf
+	loadFixtures(${1});
