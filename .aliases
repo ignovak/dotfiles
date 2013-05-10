@@ -50,7 +50,7 @@ alias gt='git tag'
 alias gr='git remote -v'
 alias gh='git hist'
 
-which ack || alias ack=ack-grep
+[ -f "`which ack`" ] || alias ack=ack-grep
 
 hub_path=`which hub`
 [[ -f $hub_path ]] && alias git=$hub_path
