@@ -1,0 +1,95 @@
+snippet conf
+	<% content_for :${1:yield_label_in_layout} do %>
+	  ${2}
+	<% end %>
+snippet cs
+	<%= collection_select ${1:object}, ${2:method}, ${3:collection}, ${4:value_method}, ${5:text_method}${6:, options} %>${7}
+snippet ct
+	<%= content_tag '${1:DIV}', ${2:content}${3:, options} %>
+snippet ffcb
+	<%= ${1:f}.check_box :${2:attribute} %>
+snippet ffe
+	<%= form_for @${2:model} do |f| %>
+	  <%= f.error_messages %>
+	  ${3}
+	<% end %>
+snippet ffff
+	<%= ${1:f}.file_field :${2:attribute} %>
+snippet ffhf
+	<%= ${1:f}.hidden_field :${2:attribute} %>
+snippet ffl
+	<%= ${1:f}.label :${2:attribute}, '${3:$2}' %>
+snippet ffpf
+	<%= ${1:f}.password_field :${2:attribute} %>
+snippet ffrb
+	<%= ${1:f}.radio_button :${2:attribute}, :${3:tag_value} %>
+snippet ff
+	<%= form_for @${1:model} do |f| %>
+	  ${2}
+	<% end %>
+snippet ffs
+	<%= ${1:f}.submit "${2:submit}" %>
+snippet ffta
+	<%= ${1:f}.text_area :${2:attribute} %>
+snippet fftf
+	<%= ${1:f}.text_field :${2:attribute} %>
+snippet fields
+	<% fields_for :${1:model}, @$1 do |${2:f}| %>
+	  ${3}
+	<% end %>
+snippet for
+	<% for ${2:item} in ${1:list} %>
+	  ${3}
+	<% end %>
+snippet ft
+	<%= form_tag(${1:'url'}) do %>
+	  ${2}
+	<% end %>
+snippet i18
+	I18n.t('${1:type.key}')${2}
+snippet it
+	<%= image_tag "${1}"${2} %>
+snippet jit
+	<%= javascript_include_tag ${1::all}, :cache => ${2:true} %>
+snippet jsit
+	<%= javascript_include_tag "${1}" %>
+snippet liai
+	<%= link_to "${1:link text}", :action => "${2:edit}", :id => @${3:item} %>
+snippet lia
+	<%= link_to "${1:link text}", :action => "${2:index}" %>
+snippet licai
+	<%= link_to "${1:link text}", :controller => "${2:items}", :action => "${3:edit}", :id => @${4:item} %>
+snippet lica
+	<%= link_to "${1:link text}", :controller => "${2:items}", :action => "${3:index}" %>
+snippet lic
+	<%= link_to "${1:link text}", :controller => "${2:items}" %>
+snippet lim
+	<%= link_to ${1:model}.${2:name}, ${3:$1_path($1)} %>
+snippet linpp
+	<%= link_to "${1:link text}", ${2:parent}_${3:child}_path(@$2) %>
+snippet linp
+	<%= link_to "${1:link text}", ${2:parent}_${3:child}_path(@$2, @$3) %>
+snippet lipp
+	<%= link_to "${1:link text}", ${2:model}s_path %>
+snippet lip
+	<%= link_to "${1:link text}", ${2:model}_path(@${3:instance}) %>
+snippet ltr
+	<%= link_to_remote "${1:name}", ${2:options} %>
+snippet lt
+	<%= link_to "${1:name}", ${2:dest} %>
+snippet ofcfs
+	<%= options_from_collection_for_select ${1:collection}, ${2:value_method}, ${3:text_method}, ${4:selected_value} %>
+snippet rf
+	<%= render :file => "${1:file}"${2} %>
+snippet rp
+	<%= render :partial => "${1:file}"${2} %>
+snippet rt
+	<%= render :template => "${1:file}"${2} %>
+snippet sbtr
+	<%= submit_to_remote ${1:name}, ${2:value} %>
+snippet slt
+	<%= stylesheet_link_tag ${1::all}, :cache => ${2:true} %>
+snippet sslt
+	<%= stylesheet_link_tag "${1}" %>
+snippet st
+	<%= submit_tag "${1:Save changes}" %>

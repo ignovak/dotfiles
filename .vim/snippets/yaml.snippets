@@ -1,0 +1,12 @@
+snippet gae
+	application: ${1:myapp}
+	version: ${2:1}
+
+	runtime: python
+	api_version: 1
+
+	handlers:
+			
+	- url: /.*
+		script: ${3:main}.py
+

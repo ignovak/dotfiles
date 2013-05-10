@@ -1,0 +1,948 @@
+snippet url
+	url('${1:../images/}${2}')${3}
+snippet @i
+	@import url(${1})
+snippet @m
+	@media print {\n\t${1}\n}
+snippet @f
+	@font-face {\n\tfont-family: ${1};\n\tsrc:url(${2});\n}
+snippet !
+	!important
+snippet pos
+	position: 
+snippet poss
+	position: static
+snippet posa
+	position: absolute
+snippet posr
+	position: relative
+snippet posf
+	position: fixed
+snippet t
+	top: 
+snippet t:a
+	top: auto
+snippet r
+	right: 
+snippet r:a
+	right: auto
+snippet b
+	bottom: 
+snippet b:a
+	bottom: auto
+snippet l
+	left: 
+snippet l:a
+	left: auto
+snippet z
+	z-index: 
+snippet z:a
+	z-index: auto
+snippet fl
+	float: 
+snippet fln
+	float: none
+snippet fll
+	float: left
+snippet flr
+	float: right
+snippet cl
+	clear: 
+snippet cln
+	clear: none
+snippet cll
+	clear: left
+snippet clr
+	clear: right
+snippet clb
+	clear: both
+snippet d
+	display: 
+snippet da
+	display: auto
+snippet dn
+	display: none
+snippet db
+	display: block
+snippet di
+	display: inline
+snippet dib
+	display: inline-block
+snippet dli
+	display: list-item
+snippet dri
+	display: run-in
+snippet dcp
+	display: compact
+snippet dtb
+	display: table
+snippet ditb
+	display: inline-table
+snippet dtbcp
+	display: table-caption
+snippet dtbcl
+	display: table-column
+snippet dtbclg
+	display: table-column-group
+snippet dtbhg
+	display: table-header-group
+snippet dtbfg
+	display: table-footer-group
+snippet dtbr
+	display: table-row
+snippet dtbrg
+	display: table-row-group
+snippet dtbc
+	display: table-cell
+snippet drb
+	display: ruby
+snippet drbb
+	display: ruby-base
+snippet drbbg
+	display: ruby-base-group
+snippet drbt
+	display: ruby-text
+snippet drbtg
+	display: ruby-text-group
+snippet v
+	visibility: 
+snippet vv
+	visibility: visible
+snippet vh
+	visibility: hidden
+snippet vc
+	visibility: collapse
+snippet ov
+	overflow: 
+snippet ovv
+	overflow: visible
+snippet ovh
+	overflow: hidden
+snippet ovs
+	overflow: scroll
+snippet ova
+	overflow: auto
+snippet ovx
+	overflow-x: 
+snippet ovxv
+	overflow-x: visible
+snippet ovxh
+	overflow-x: hidden
+snippet ovxs
+	overflow-x: scroll
+snippet ovxa
+	overflow-x: auto
+snippet ovy
+	overflow-y: 
+snippet ovyv
+	overflow-y: visible
+snippet ovyh
+	overflow-y: hidden
+snippet ovys
+	overflow-y: scroll
+snippet ovya
+	overflow-y: auto
+snippet ovs:a
+	overflow-style: auto
+snippet ovs:s
+	overflow-style: scrollbar
+snippet ovs:p
+	overflow-style: panner
+snippet ovs:m
+	overflow-style: move
+snippet ovs:mq
+	overflow-style: marquee
+snippet zoo
+	zoom: 1
+snippet cp
+	clip: 
+snippet cp:a
+	clip: auto
+snippet cp:r
+	clip: rect(${1})
+snippet bxz
+	box-sizing: 
+snippet bxz:cb
+	box-sizing: content-box
+snippet bxz:bb
+	box-sizing: border-box
+snippet bxsh
+	box-shadow: 
+snippet bxsh:n
+	box-shadow: none
+snippet bxsh:w
+	-webkit-box-shadow: 0 0 0 #000
+snippet bxsh:m
+	-moz-box-shadow: 0 0 0 0 #000
+snippet m
+	margin: 
+snippet ma
+	margin: auto
+snippet mt
+	margin-top: 
+snippet mt:a
+	margin-top: auto
+snippet mr
+	margin-right: 
+snippet mr:a
+	margin-right: auto
+snippet mb
+	margin-bottom: 
+snippet mb:a
+	margin-bottom: auto
+snippet ml
+	margin-left: 
+snippet ml:a
+	margin-left: auto
+snippet p
+	padding: 
+snippet p:0
+	padding: 0
+snippet p:2
+	padding: 0 0
+snippet p:3
+	padding: 0 0 0
+snippet p:4
+	padding: 0 0 0 0
+snippet pt
+	padding-top: 
+snippet pr
+	padding-right: 
+snippet pb
+	padding-bottom: 
+snippet pl
+	padding-left: 
+snippet w
+	width: 
+snippet w:a
+	width: auto
+snippet h
+	height: 
+snippet h:a
+	height: auto
+snippet maw
+	max-width: 
+snippet maw:n
+	max-width: none
+snippet mah
+	max-height: 
+snippet mah:n
+	max-height: none
+snippet miw
+	min-width: 
+snippet mih
+	min-height: 
+snippet o
+	outline: 
+snippet o:n
+	outline: none
+snippet oo
+	outline-offset: 
+snippet ow
+	outline-width: 
+snippet os
+	outline-style: 
+snippet oc
+	outline-color: #
+snippet oc:i
+	outline-color: invert
+snippet bd
+	border: 
+snippet bd+
+	border: 1px solid #
+snippet bdn
+	border: none
+snippet bdbk
+	border-break: 
+snippet bdbk:c
+	border-break: close
+snippet bdcl
+	border-collapse: 
+snippet bdclc
+	border-collapse: collapse
+snippet bdcls
+	border-collapse: separate
+snippet bdc
+	border-color: #
+snippet bdi
+	border-image: url(${1})
+snippet bdi:n
+	border-image: none
+snippet bdi:w
+	-webkit-border-image: url(${1}) 0 0 0 0 stretch stretch
+snippet bdi:m
+	-moz-border-image: url(${1}) 0 0 0 0 stretch stretch
+snippet bdti
+	border-top-image: url(${1})
+snippet bdti:n
+	border-top-image: none
+snippet bdri
+	border-right-image: url(${1})
+snippet bdri:n
+	border-right-image: none
+snippet bdbi
+	border-bottom-image: url(${1})
+snippet bdbi:n
+	border-bottom-image: none
+snippet bdli
+	border-left-image: url(${1})
+snippet bdli:n
+	border-left-image: none
+snippet bdci
+	border-corner-image: url(${1})
+snippet bdci:n
+	border-corner-image: none
+snippet bdci:c
+	border-corner-image: continue
+snippet bdtli
+	border-top-left-image: url(${1})
+snippet bdtli:n
+	border-top-left-image: none
+snippet bdtli:c
+	border-top-left-image: continue
+snippet bdtri
+	border-top-right-image: url(${1})
+snippet bdtri:n
+	border-top-right-image: none
+snippet bdtri:c
+	border-top-right-image: continue
+snippet bdbri
+	border-bottom-right-image: url(${1})
+snippet bdbri:n
+	border-bottom-right-image: none
+snippet bdbri:c
+	border-bottom-right-image: continue
+snippet bdbli
+	border-bottom-left-image: url(${1})
+snippet bdbli:n
+	border-bottom-left-image: none
+snippet bdbli:c
+	border-bottom-left-image: continue
+snippet bdf
+	border-fit: 
+snippet bdf:c
+	border-fit: clip
+snippet bdf:r
+	border-fit: repeat
+snippet bdf:sc
+	border-fit: scale
+snippet bdf:st
+	border-fit: stretch
+snippet bdf:ow
+	border-fit: overwrite
+snippet bdf:of
+	border-fit: overflow
+snippet bdf:sp
+	border-fit: space
+snippet bdl
+	border-left: 
+snippet bdl:a
+	border-length: auto
+snippet bdsp
+	border-spacing: 
+snippet bds
+	border-style: 
+snippet bdsn
+	border-style: none
+snippet bdsh
+	border-style: hidden
+snippet bdsdt
+	border-style: dotted
+snippet bdsds
+	border-style: dashed
+snippet bdss
+	border-style: solid
+snippet bdsdb
+	border-style: double
+snippet bdsdtds
+	border-style: dot-dash
+snippet bdsdtdtds
+	border-style: dot-dot-dash
+snippet bdsw
+	border-style: wave
+snippet bdsg
+	border-style: groove
+snippet bdsr
+	border-style: ridge
+snippet bdsi
+	border-style: inset
+snippet bdso
+	border-style: outset
+snippet bdw
+	border-width: 
+snippet bdt
+	border-top: 
+snippet bdt+
+	border-top: 1px solid #
+snippet bdtn
+	border-top: none
+snippet bdtw
+	border-top-width: 
+snippet bdts
+	border-top-style: 
+snippet bdtsn
+	border-top-style: none
+snippet bdtc
+	border-top-color: #
+snippet bdr
+	border-right: 
+snippet bdr+
+	border-right: 1px solid #
+snippet bdrn
+	border-right: none
+snippet bdrw
+	border-right-width: 
+snippet bdrs
+	border-right-style: 
+snippet bdrsn
+	border-right-style: none
+snippet bdrc
+	border-right-color: #
+snippet bdb
+	border-bottom: 
+snippet bdb+
+	border-bottom: 1px solid #
+snippet bdbn
+	border-bottom: none
+snippet bdbw
+	border-bottom-width: 
+snippet bdbs
+	border-bottom-style: 
+snippet bdbsn
+	border-bottom-style: none
+snippet bdbc
+	border-bottom-color: #
+snippet bdln
+	border-length: 
+snippet bdl+
+	border-left: 1px solid #
+snippet bdln
+	border-left: none
+snippet bdlw
+	border-left-width: 
+snippet bdls
+	border-left-style: 
+snippet bdlsn
+	border-left-style: none
+snippet bdlc
+	border-left-color: #
+snippet bdrus
+	border-radius: 
+snippet bdrus:w
+	-webkit-border-radius: 
+snippet bdtrrs
+	border-top-right-radius: 
+snippet bdtlrs
+	border-top-left-radius: 
+snippet bdbrrs
+	border-bottom-right-radius: 
+snippet bdblrs
+	border-bottom-left-radius: 
+snippet bg
+	background: 
+snippet bg+
+	background: url(${1:../images/}${2}) 0 0 no-repeat
+snippet bgn
+	background: none
+snippet bg:ie
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=''${1}x.png'')
+snippet bgc
+	background-color: #
+snippet bgi
+	background-image: url(${1})
+snippet bgi:n
+	background-image: none
+snippet bgr
+	background-repeat: 
+snippet bgr:n
+	background-repeat: no-repeat
+snippet bgr:x
+	background-repeat: repeat-x
+snippet bgr:y
+	background-repeat: repeat-y
+snippet bga
+	background-attachment: 
+snippet bga:f
+	background-attachment: fixed
+snippet bga:s
+	background-attachment: scroll
+snippet bgp
+	background-position: 0 0
+snippet bgpx
+	background-position-x: 
+snippet bgpy
+	background-position-y: 
+snippet bgbk
+	background-break: 
+snippet bgbk:bb
+	background-break: bounding-box
+snippet bgbk:eb
+	background-break: each-box
+snippet bgbk:c
+	background-break: continuous
+snippet bgcp
+	background-clip: 
+snippet bgcp:bb
+	background-clip: border-box
+snippet bgcp:pb
+	background-clip: padding-box
+snippet bgcp:cb
+	background-clip: content-box
+snippet bgcp:nc
+	background-clip: no-clip
+snippet bgo
+	background-origin: 
+snippet bgo:pb
+	background-origin: padding-box
+snippet bgo:bb
+	background-origin: border-box
+snippet bgo:cb
+	background-origin: content-box
+snippet bgz
+	background-size: 
+snippet bgz:a
+	background-size: auto
+snippet bgz:ct
+	background-size: contain
+snippet bgz:cv
+	background-size: cover
+snippet c
+	color: #
+snippet tbl
+	table-layout: 
+snippet tbl:a
+	table-layout: auto
+snippet tbl:f
+	table-layout: fixed
+snippet cps
+	caption-side: 
+snippet cps:t
+	caption-side: top
+snippet cps:b
+	caption-side: bottom
+snippet ec
+	empty-cells: 
+snippet ec:s
+	empty-cells: show
+snippet ec:h
+	empty-cells: hide
+snippet lis
+	list-style: 
+snippet lisn
+	list-style: none
+snippet lisp
+	list-style-position: 
+snippet lispi
+	list-style-position: inside
+snippet lispo
+	list-style-position: outside
+snippet list
+	list-style-type: 
+snippet listn
+	list-style-type: none
+snippet listd
+	list-style-type: disc
+snippet listc
+	list-style-type: circle
+snippet lists
+	list-style-type: square
+snippet listdc
+	list-style-type: decimal
+snippet listdclz
+	list-style-type: decimal-leading-zero
+snippet listlr
+	list-style-type: lower-roman
+snippet listur
+	list-style-type: upper-roman
+snippet lisi
+	list-style-image: 
+snippet lisin
+	list-style-image: none
+snippet q
+	quotes: 
+snippet q:n
+	quotes: none
+snippet q:ru
+	quotes: ''\00AB'' ''\00BB'' ''\201E'' ''\201C''
+snippet q:en
+	quotes: ''\201C'' ''\201D'' ''\2018'' ''\2019''
+snippet ct
+	content: 
+snippet ct:n
+	content: normal
+snippet ct:oq
+	content: open-quote
+snippet ct:noq
+	content: no-open-quote
+snippet ct:cq
+	content: close-quote
+snippet ct:ncq
+	content: no-close-quote
+snippet ct:a
+	content: attr(${1})
+snippet ct:c
+	content: counter(${1})
+snippet ct:cs
+	content: counters(${1})
+snippet coi
+	counter-increment: 
+snippet cor
+	counter-reset: 
+snippet va
+	vertical-align: 
+snippet va:sup
+	vertical-align: super
+snippet vat
+	vertical-align: top
+snippet va:tt
+	vertical-align: text-top
+snippet vam
+	vertical-align: middle
+snippet vabl
+	vertical-align: baseline
+snippet vab
+	vertical-align: bottom
+snippet va:tb
+	vertical-align: text-bottom
+snippet va:sub
+	vertical-align: sub
+snippet tal
+	text-align: left
+snippet tac
+	text-align: center
+snippet tar
+	text-align: right
+snippet tala
+	text-align-last: auto
+snippet tall
+	text-align-last: left
+snippet talc
+	text-align-last: center
+snippet talr
+	text-align-last: right
+snippet td
+	text-decoration: 
+snippet tdn
+	text-decoration: none
+snippet tdu
+	text-decoration: underline
+snippet tdo
+	text-decoration: overline
+snippet tdl
+	text-decoration: line-through
+snippet te
+	text-emphasis: 
+snippet te:n
+	text-emphasis: none
+snippet te:ac
+	text-emphasis: accent
+snippet te:dt
+	text-emphasis: dot
+snippet te:c
+	text-emphasis: circle
+snippet te:ds
+	text-emphasis: disc
+snippet te:b
+	text-emphasis: before
+snippet te:a
+	text-emphasis: after
+snippet th
+	text-height: 
+snippet th:a
+	text-height: auto
+snippet th:f
+	text-height: font-size
+snippet th:t
+	text-height: text-size
+snippet th:m
+	text-height: max-size
+snippet ti
+	text-indent: 
+snippet ti:-
+	text-indent: -9999px
+snippet tj
+	text-justify: 
+snippet tj:a
+	text-justify: auto
+snippet tj:iw
+	text-justify: inter-word
+snippet tj:ii
+	text-justify: inter-ideograph
+snippet tj:ic
+	text-justify: inter-cluster
+snippet tj:d
+	text-justify: distribute
+snippet tj:k
+	text-justify: kashida
+snippet tj:t
+	text-justify: tibetan
+snippet to
+	text-outline: 
+snippet to+
+	text-outline: 0 0 #000
+snippet to:n
+	text-outline: none
+snippet tove
+	text-overflow: ellipsis
+snippet tr
+	text-replace: 
+snippet tr:n
+	text-replace: none
+snippet tt
+	text-transform: 
+snippet tt:n
+	text-transform: none
+snippet tt:c
+	text-transform: capitalize
+snippet tt:u
+	text-transform: uppercase
+snippet tt:l
+	text-transform: lowercase
+snippet tw
+	text-wrap: 
+snippet tw:n
+	text-wrap: normal
+snippet tw:no
+	text-wrap: none
+snippet tw:u
+	text-wrap: unrestricted
+snippet tw:s
+	text-wrap: suppress
+snippet tsh
+	text-shadow: 
+snippet tsh+
+	text-shadow: 0 0 0 #000
+snippet tsh:n
+	text-shadow: none
+snippet lh
+	line-height: 
+snippet whs
+	white-space: 
+snippet whsn
+	white-space: normal
+snippet whsp
+	white-space: pre
+snippet whsnw
+	white-space: nowrap
+snippet whspw
+	white-space: pre-wrap
+snippet whspl
+	white-space: pre-line
+snippet whsc
+	white-space-collapse: 
+snippet whsc:n
+	white-space-collapse: normal
+snippet whsc:k
+	white-space-collapse: keep-all
+snippet whsc:l
+	white-space-collapse: loose
+snippet whsc:bs
+	white-space-collapse: break-strict
+snippet whsc:ba
+	white-space-collapse: break-all
+snippet wob
+	word-break: 
+snippet wob:n
+	word-break: normal
+snippet wob:k
+	word-break: keep-all
+snippet wob:l
+	word-break: loose
+snippet wob:bs
+	word-break: break-strict
+snippet wob:ba
+	word-break: break-all
+snippet wos
+	word-spacing: 
+snippet wow
+	word-wrap: 
+snippet wow:nm
+	word-wrap: normal
+snippet wow:n
+	word-wrap: none
+snippet wow:u
+	word-wrap: unrestricted
+snippet wow:s
+	word-wrap: suppress
+snippet lts
+	letter-spacing: 
+snippet f
+	font: 
+snippet f+
+	font: 1em Arial,sans-serif
+snippet fw
+	font-weight: 
+snippet fwn
+	font-weight: normal
+snippet fwb
+	font-weight: bold
+snippet fwbr
+	font-weight: bolder
+snippet fwlr
+	font-weight: lighter
+snippet fs
+	font-style: 
+snippet fsn
+	font-style: normal
+snippet fsi
+	font-style: italic
+snippet fso
+	font-style: oblique
+snippet fv
+	font-variant: 
+snippet fv:n
+	font-variant: normal
+snippet fv:sc
+	font-variant: small-caps
+snippet fz
+	font-size: 
+snippet fza
+	font-size-adjust: 
+snippet fza:n
+	font-size-adjust: none
+snippet ff
+	font-family: 
+snippet ff:s
+	font-family: serif
+snippet ff:ss
+	font-family: sans-serif
+snippet ff:c
+	font-family: cursive
+snippet ff:f
+	font-family: fantasy
+snippet ff:m
+	font-family: monospace
+snippet fef
+	font-effect: 
+snippet fef:n
+	font-effect: none
+snippet fef:eg
+	font-effect: engrave
+snippet fef:eb
+	font-effect: emboss
+snippet fef:o
+	font-effect: outline
+snippet fem
+	font-emphasize: 
+snippet femp
+	font-emphasize-position: 
+snippet femp:b
+	font-emphasize-position: before
+snippet femp:a
+	font-emphasize-position: after
+snippet fems
+	font-emphasize-style: 
+snippet fems:n
+	font-emphasize-style: none
+snippet fems:ac
+	font-emphasize-style: accent
+snippet fems:dt
+	font-emphasize-style: dot
+snippet fems:c
+	font-emphasize-style: circle
+snippet fems:ds
+	font-emphasize-style: disc
+snippet fsm
+	font-smooth: 
+snippet fsm:a
+	font-smooth: auto
+snippet fsm:n
+	font-smooth: never
+snippet fsm:aw
+	font-smooth: always
+snippet fst
+	font-stretch: 
+snippet fst:n
+	font-stretch: normal
+snippet fst:uc
+	font-stretch: ultra-condensed
+snippet fst:ec
+	font-stretch: extra-condensed
+snippet fst:c
+	font-stretch: condensed
+snippet fst:sc
+	font-stretch: semi-condensed
+snippet fst:se
+	font-stretch: semi-expanded
+snippet fst:e
+	font-stretch: expanded
+snippet fst:ee
+	font-stretch: extra-expanded
+snippet fst:ue
+	font-stretch: ultra-expanded
+snippet op
+	opacity: 
+snippet op:ie
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100)
+snippet op:ms
+	-ms-filter: ''progid:DXImageTransform.Microsoft.Alpha(Opacity=100)''
+snippet rz
+	resize: 
+snippet rz:n
+	resize: none
+snippet rz:b
+	resize: both
+snippet rz:h
+	resize: horizontal
+snippet rz:v
+	resize: vertical
+snippet cur
+	cursor: 
+snippet cura
+	cursor: auto
+snippet curd
+	cursor: default
+snippet curc
+	cursor: crosshair
+snippet curha
+	cursor: hand
+snippet curhe
+	cursor: help
+snippet curm
+	cursor: move
+snippet curp
+	cursor: pointer
+snippet curt
+	cursor: text
+snippet pgbb
+	page-break-before: 
+snippet pgbb:au
+	page-break-before: auto
+snippet pgbb:al
+	page-break-before: always
+snippet pgbb:l
+	page-break-before: left
+snippet pgbb:r
+	page-break-before: right
+snippet pgbi
+	page-break-inside: 
+snippet pgbi:au
+	page-break-inside: auto
+snippet pgbi:av
+	page-break-inside: avoid
+snippet pgba
+	page-break-after: 
+snippet pgba:au
+	page-break-after: auto
+snippet pgba:al
+	page-break-after: always
+snippet pgba:l
+	page-break-after: left
+snippet pgba:r
+	page-break-after: right
+snippet orp
+	orphans: 
+snippet wid
+	widows: 
+snippet lgrad
+	background: gradient(linear, 0 top, 0 bottom,
+											from(#000),
+											to(#fff),
+											color-stop(.5, #aaa)
+											);
+snippet trans
+	-moz-transition: 
+	-webkit-transition: 
+	transition: ${1:all} ${2:0.3s} ease-in-out
+snippet co
+	content: 
