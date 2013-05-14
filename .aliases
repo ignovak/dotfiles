@@ -72,8 +72,11 @@ all()
     elif [ `basename $PWD` == 'mischandlers' ]
     then
         e pages-desktop/error/_error.priv.js
-    else
+    elif [ `basename ${PWD%[0-9]}` == 'web' ]
+    then
         es pages-desktop/search/all/_all.priv.js
+    else
+        e pages-desktop/common/_common.priv.js
     fi
 }
 

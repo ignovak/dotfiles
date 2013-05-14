@@ -1,0 +1,4 @@
+alias hol="cd /hol/arkanavt/report/templates/YxWeb"
+alias wc1="cd ~/wc1/video3"
+
+[ -d wc1 ] && wc1
