@@ -76,6 +76,9 @@ filetype off             " Turn off filetype plugins before bundles init
 filetype plugin indent on
 syntax on
 
+" General options
+set exrc secure             " Enable per-directory .vimrc files and disable unsafe commands in them
+
 " Buffer options
 set hidden                  " hide buffers when they are abandoned
 set autoread                " auto reload changed files
@@ -85,7 +88,6 @@ set title                   " show file name in window title
 set novisualbell            " mute error bell
 set list
 set listchars=tab:⇥\ ,trail:·,extends:⋯,precedes:⋯,nbsp:~
-set wrap
 set linebreak               " break lines by words
 set scrolljump=5
 set sidescroll=4
@@ -98,6 +100,9 @@ set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 set ttyfast                 " Optimize for fast terminal connections
 set shortmess=atI           " Don’t show the intro message when starting Vim
+set nostartofline
+
+set wrap
 
 " Tab options
 set autoindent              " copy indent from previous line
@@ -139,7 +144,8 @@ set fileformat=unix
 " Wildmenu
 set wildmenu                " use wildmenu ...
 set wildcharm=<TAB>
-set wildignore=*.pyc        " ignore file pattern
+set wildignore+=*.pyc        " ignore file pattern
+set wildignore+=*.be.*,*.kk.*,*.tt.*,*.uk.*
 
 " Folding
 if has('folding')
@@ -157,6 +163,7 @@ set iskeyword+=-
 set nobackup
 set nowritebackup
 set noswapfile
+set noeol
 
 set diffopt=filler
 set diffopt+=vertical
@@ -240,6 +247,8 @@ imap <leader>s <esc>:w<cr>
 nnoremap Q <c-w>s:bp<cr><c-w>j:bd<cr>
 " nnoremap Q :bd<cr>
 
+" vmap <expr> p strlen(getline('.')) == col('.') ? '"_dp' : '"_dP'
+
 nmap <leader>j :JSHint<cr>
 
 " Open files
@@ -248,7 +257,7 @@ nnoremap <leader>e :e <c-r>=expand("%:h")<cr>/
 nnoremap <leader>d :diffsplit <c-r>=expand("%:h")<cr>/
 cmap <leader>e <c-r>=expand("%:h")<cr>/
 
-nnoremap <silent> <leader>vi :e ~/.vim/.vimrc<cr>
+nnoremap <silent> <leader>vi :e ~/.vimrc<cr>
 nnoremap <silent> <leader>vs :e ~/.vim/snippets/javascript.snippets
 nnoremap <silent> <leader>vp :vsp <c-r>=expand("%:h")<cr>/
 

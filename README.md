@@ -5,7 +5,7 @@
 ### Using Git and the bootstrap script
 
 ```bash
-git clone git@github.yandex-team.ru:vorian/dotfiles.git && cd dotfiles && ./bootstrap.sh
+git clone git@github.yandex-team.ru:vorian/dotfiles.git && dotfiles/bootstrap.sh
 ```
 
 To update, `cd` into your local `dotfiles` repository and then:

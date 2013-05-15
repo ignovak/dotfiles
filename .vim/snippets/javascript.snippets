@@ -152,19 +152,30 @@ snippet exp
 	data.experiments['${1}']${2}
 snippet expr
 	data.rdat.cgi().p('test-id') == ${1}
+snippet base
+	this.__base.apply(this, arguments);
 snippet fbi
-	findBlockInside${1}
+	findBlockInside('${1}')${2}
+snippet fbo
+	findBlockOutside('${1}')${2}
+snippet fbon
+	findBlockOn('${1}', '${2}')${3}
+snippet ace
+	afterCurrentEvent(${1})${2}
+snippet osm
+	onSetMod: {
+		${1}: function() {
+			${2}
+		}
+	}
 snippet decl
-	BEM.DOM.decl(${1}, {
-
+	BEM.DOM.decl('${1:`Filename()`}', {
 		onSetMod: {
 			js: function() {
 				${2}
 			}
 		}
-
 	}, {
-
 	});
 snippet logger
 	logger = $('<ul>').css({
