@@ -125,6 +125,8 @@ snippet map
 	})
 snippet euc
 	encodeURIComponent(${1})${2}
+snippet duc
+	decodeURIComponent(${1})${2}
 snippet timer
 	var date = new Date
 	${1}
@@ -142,6 +144,8 @@ snippet @ret
 	@return {${1:type}} ${2:description}
 snippet blocks
 	blocks['${1}']${2}
+snippet bblocks
+	BEM.blocks['${1}']${2}
 snippet block
 	block: '${1}',${2}
 snippet elem
@@ -169,13 +173,16 @@ snippet osm
 		}
 	}
 snippet decl
-	BEM.DOM.decl('${1:`Filename()`}', {
+	BEM.DOM.decl(`Snippet_BEMBlockFromFilename()`, {
+
 		onSetMod: {
+
 			js: function() {
-				${2}
+				${1}
 			}
+
 		}
-	}, {
+
 	});
 snippet logger
 	logger = $('<ul>').css({

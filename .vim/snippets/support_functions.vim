@@ -82,6 +82,16 @@ function! Snippet_JavaInstanceVarType(name)
     return "<+type+>"
 endfunction
 
+"javascript {{{1
+function! Snippet_BEMBlockFromFilename(...)
+    let name = expand("%:t:r")
+    if name =~ "_"
+        let arr = split(name, "_")
+        return "{ block: '" . arr[0] . "', modName: '" . arr[1] . "', modVal: '" . arr[2] . "' }"
+    else
+        return "'" . name . "'"
+    endif
+endfunction
 
 "global {{{1
 function! s:start_comment()

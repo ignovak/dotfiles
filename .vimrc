@@ -261,9 +261,7 @@ nnoremap <silent> <leader>vi :e ~/.vimrc<cr>
 nnoremap <silent> <leader>vs :e ~/.vim/snippets/javascript.snippets
 nnoremap <silent> <leader>vp :vsp <c-r>=expand("%:h")<cr>/
 
-" Monkeypatch for vcscommand.vim
-" Opens commit data in new window
-" nnoremap <buffer> o yiw:VCSLog -r<c-r>"<cr>
+so ~/.vim/snippets/support_functions.vim
 
 " Some grep stuff
 " let g:ackprg="ack-grep -H --nocolor --nogroup --column"
