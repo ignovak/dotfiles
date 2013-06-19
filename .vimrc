@@ -220,8 +220,8 @@ let g:solarized_termtrans=1
 
 " FuzzyFinder
 let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|pyc|jpg|png|gif|svg)$|(^|[/\\])(\.(hg|git|bzr)|tmp)($|[/\\])'
-nnoremap <silent> <c-b> :FufBuffer<CR>
 nnoremap <silent> <c-t> :FufFile **/<CR>
+nnoremap <silent> <c-n> :FufBuffer<CR>
 
 " NERDTree
 let NERDTreeShowHidden=1
@@ -320,4 +320,9 @@ if has('gui_running')
 else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+if &term =~ "xterm"
+  let &t_ti = "\<Esc>[?47h"
+  let &t_te = "\<Esc>[?47l"
 endif

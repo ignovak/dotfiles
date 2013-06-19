@@ -36,7 +36,7 @@
 
 [alias]
     st = status
-    br = branch -a
+    br = branch
     co = checkout
     di = diff
     dc = diff --cached

@@ -1,4 +1,4 @@
-export PATH=./node_modules/.bin:$HOME/bin:/usr/local/share/npm/bin:$PATH:$HOME/node_modules/.bin:
+export PATH=./node_modules/.bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/bin:$PATH:$HOME/node_modules/.bin:
 
 export EDITOR=vim
 export PAGER=less
@@ -20,3 +20,6 @@ export HISTCONTROL=ignoredups
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:st:sup:gs"
 
 export LANG=ru_RU.UTF-8
+
+# fix sorting against underscores
+export LC_COLLATE=C

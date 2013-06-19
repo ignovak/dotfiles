@@ -61,15 +61,17 @@ snippet cte
 snippet clv
 	console.log('${1:var}: ' + $1);${2}
 snippet cln
-	console.log("\n\n\n\033[31m");
+	console.log("\n\033[31m");
 	console.log(${1});
-	console.log("\033[0m\n\n\n");
+	console.log("\033[0m\n");
 snippet dmp
-	console.log("\n\n\n\033[31m");
+	console.log("\n\033[31m");
 	console.log(JSON.stringify(${1}, null, '  '))
-	console.log("\033[0m\n\n\n");
+	console.log("\033[0m\n");
 snippet clj
 	console.log(JSON.stringify(${1}));${2}
+snippet uw
+	Util.warn('\n\033[31m' + ${1} + '\033[0m');${2}
 snippet pd
 	e.preventDefault();${1}
 snippet proto
@@ -172,6 +174,8 @@ snippet osm
 			${2}
 		}
 	}
+snippet sel
+	{ name: '${1}', modName: '${2}', modVal: '${3}' }${4}
 snippet decl
 	BEM.DOM.decl(`Snippet_BEMBlockFromFilename()`, {
 
@@ -184,6 +188,10 @@ snippet decl
 		}
 
 	});
+snippet should
+	({
+		shouldDeps: ${1}
+	})
 snippet logger
 	logger = $('<ul>').css({
 		'position': 'absolute',
@@ -199,3 +207,20 @@ snippet pcss
 	data.pushCSSJS({ name: '${1:wiz}', elem: 'css', url: data.config.staticHost + 'bundles/$1/$1.less.css' });${2}
 snippet pjs
 	data.pushCSSJS({ name: '${1:wiz}', elem: 'js', url: data.config.staticHost + 'bundles/$1/_$1.js' });${2}
+snippet package
+	{
+		"name": "${1}",
+		"version": "${2:0.0.1}",
+		"repository": {
+			"type": "git",
+			"url": "git://github.yandex-team.ru/${3}.git"
+		},
+		"engines": {
+			"node": "0.8 | 0.9 | 0.10"
+		},
+		"dependencies": {
+			${4}
+		},
+		"devDependencies": {},
+		"private": true
+	}
