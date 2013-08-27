@@ -195,7 +195,7 @@ if has("autocmd")
 
         au BufRead,BufNewFile *.js set ft=javascript.javascript-jquery
         au BufRead,BufNewFile *.json set ft=javascript
-        au BufRead,BufNewFile *.json set equalprg=python\ -mjson.tool
+        " au BufRead,BufNewFile *.json set equalprg=python\ -mjson.tool
         au BufRead,BufNewFile *.bemhtml set ft=javascript
         au BufRead,BufNewFile *.xjst set ft=javascript
 
@@ -204,6 +204,9 @@ if has("autocmd")
         au BufRead,BufNewFile *.plaintex set ft=plaintex.tex
 
         au BufRead,BufNewFile *.html nmap <leader>o :!open %<cr>
+
+        " Avoid syntax-highlighting for files larger than 1MB
+        au BufReadPre * if getfsize(expand("%")) > 1000*1024 | syntax off | endif
 
         " Auto close preview window
         autocmd CursorMovedI * if pumvisible() == 0|pclose|endif

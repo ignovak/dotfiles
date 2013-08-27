@@ -160,12 +160,12 @@ snippet expr
 	data.rdat.cgi().p('test-id') == ${1}
 snippet base
 	this.__base.apply(this, arguments);
-snippet fbi
+snippet fb
+	findBlock
+snippet findBlocki
 	findBlockInside('${1}')${2}
-snippet fbo
+snippet findBlocko
 	findBlockOutside('${1}')${2}
-snippet fbon
-	findBlockOn('${1}', '${2}')${3}
 snippet ace
 	afterCurrentEvent(${1})${2}
 snippet osm
@@ -181,8 +181,10 @@ snippet decl
 
 		onSetMod: {
 
-			js: function() {
-				${1}
+			js: {
+				inited: function() {
+					${1}
+				}
 			}
 
 		}
@@ -224,3 +226,7 @@ snippet package
 		"devDependencies": {},
 		"private": true
 	}
+snippet tech
+	require('enb/techs/${1}')${2}
+snippet techs
+	[require('enb/techs/${1}'), { ${2} }]${3}
