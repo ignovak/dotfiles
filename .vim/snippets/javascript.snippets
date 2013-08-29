@@ -17,7 +17,7 @@ snippet clos
 		${1}
 	})();
 snippet r
-	return${1}
+	return
 snippet re
 	require('${1}')${2}
 snippet pr
@@ -232,7 +232,7 @@ snippet techs
 	[require('enb/techs/${1}'), { ${2} }]${3}
 snippet xhr
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', '/ajax', true);
+	xhr.open('GET', '${1}', true);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4)
 			console.log(xhr);

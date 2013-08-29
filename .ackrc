@@ -4,7 +4,6 @@
 --follow
 --color
 --group
---all
 
 # Rails
 --ignore-dir=log
