@@ -230,3 +230,12 @@ snippet tech
 	require('enb/techs/${1}')${2}
 snippet techs
 	[require('enb/techs/${1}'), { ${2} }]${3}
+snippet xhr
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', '/ajax', true);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4)
+			console.log(xhr);
+		callback(xhr.responseText, xhr.status);
+	}
+	xhr.send();

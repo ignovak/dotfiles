@@ -71,4 +71,23 @@ _expand()
 # esac
 # export PS1="${SCREENTITLE}[\u@\h \W]\$ "
 
+
+# подмаунтить jail
+# используется http://osxfuse.github.com/
+jailmount()
+{
+    JAIL=${1:-"leon42.yandex.ru"}
+    echo -e "\033[33m===> MOUNT JAIL: \033[31m$JAIL \033[0m"
+    mkdir -p /mount/$JAIL
+    jailunmount $JAIL
+    sshfs $USER@$JAIL:/ /mount/$JAIL -oauto_cache,reconnect,volname=$1
+}
+
+# размаунтить джейл
+jailunmount()
+{
+    JAIL=${1:-"boogie4.yandex.ru"}
+    umount /mount/$1 >/dev/null
+}
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function

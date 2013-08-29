@@ -53,6 +53,8 @@ alias gt='git tag'
 
 [ -f "`which ack`" ] || alias ack=ack-grep
 
+[ -f "`which gmake`" ] && alias make=gmake
+
 hub_path=`which hub`
 [[ -f $hub_path ]] && alias git=$hub_path
 
@@ -65,6 +67,7 @@ sd()
     svn di $@ | colordiff
 }
 
+# serp
 all()
 {
     if [ `basename $PWD` == 'touch' ]
