@@ -17,6 +17,9 @@ filetype off             " Turn off filetype plugins before bundles init
 
   Bundle 'gmarik/vundle'
 
+  Bundle 'Shougo/unite.vim'
+  Bundle 'Shougo/vimproc.vim'
+
   " Add your bundles here
 
   " Snipmate dependencies
@@ -35,9 +38,9 @@ filetype off             " Turn off filetype plugins before bundles init
   Bundle 'tpope/vim-repeat'
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-unimpaired'
-  Bundle 'vim-scripts/FuzzyFinder'
+  " Bundle 'vim-scripts/FuzzyFinder'
   Bundle 'vim-scripts/L9'
-  Bundle 'vim-scripts/vcscommand.vim'
+  " Bundle 'vim-scripts/vcscommand.vim'
   Bundle 'vim-scripts/tlib'
 
   Bundle 'othree/html5.vim'
@@ -151,8 +154,6 @@ set wildignore+=*.be.*,*.kk.*,*.tt.*,*.uk.*
 if has('folding')
   set foldmethod=indent
   set foldlevel=99
-  " toggle folds with space
-  nmap <space> za
 endif
 
 " Edit
@@ -221,10 +222,34 @@ let g:solarized_termcolors=256
 let g:solarized_contrast='high'
 let g:solarized_termtrans=1
 
-" FuzzyFinder
-let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|orig|swp|pyc|jpg|png|gif|svg)$|(^|[/\\])(\.(hg|git|bzr)|tmp)($|[/\\])'
-nnoremap <silent> <c-t> :FufFile **/<CR>
-nnoremap <silent> <c-n> :FufBuffer<CR>
+" Unite
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/'], '\|'))
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
+
+nmap <space> [unite]
+nnoremap [unite] <nop>
+
+nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
+nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -start-insert -buffer-name=files file_rec/async<cr>
+" nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
+" nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+" nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+" nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+
+if executable('ag')
+    let g:unite_source_grep_command='ag'
+    let g:unite_source_grep_default_opts='--nocolor --nogroup -a -S'
+    let g:unite_source_grep_recursive_opt=''
+    let g:unite_source_grep_search_word_highlight = 1
+elseif executable('ack')
+    let g:unite_source_grep_command='ack'
+    let g:unite_source_grep_default_opts='--no-group --no-color'
+    let g:unite_source_grep_recursive_opt=''
+    let g:unite_source_grep_search_word_highlight = 1
+endif
 
 " NERDTree
 let NERDTreeShowHidden=1
