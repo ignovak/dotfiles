@@ -2,78 +2,108 @@ set nocompatible
 
 filetype off             " Turn off filetype plugins before bundles init
 
-" Setting up Vundle - the vim plugin bundler
-  let iCanHazVundle=1
-  let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-  if !filereadable(vundle_readme)
-    echo 'Installing Vundle..'
-    echo ''
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-  endif
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
 
-  Bundle 'gmarik/vundle'
+" NEOBUNDLE {{{ ===============================================================
 
-  Bundle 'Shougo/unite.vim'
-  Bundle 'Shougo/vimproc.vim'
+" NeoBundle auto-installation and setup {{{
 
-  " Add your bundles here
+" Auto installing NeoBundle
+let iCanHazNeoBundle=1
+let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
+if !filereadable(neobundle_readme)
+    echo "Installing NeoBundle.."
+    echo ""
+    silent !mkdir -p $HOME/.vim/bundle
+    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    let iCanHazNeoBundle=0
+endif
 
-  " Snipmate dependencies
-  Bundle 'MarcWeber/vim-addon-mw-utils'
-  Bundle 'tomtom/tlib_vim'
-  " Bundle 'honza/snipmate-snippets'
+" Call NeoBundle
+if has('vim_starting')
+    set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand($HOME.'/.vim/bundle/'))
 
-  Bundle 'garbas/vim-snipmate'
-  Bundle 'jpalardy/vim-slime'
-  Bundle 'mileszs/ack.vim'
-  Bundle 'Raimondi/delimitMate'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'tomtom/tcomment_vim'
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'tpope/vim-endwise'
-  Bundle 'tpope/vim-repeat'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-unimpaired'
-  " Bundle 'vim-scripts/FuzzyFinder'
-  Bundle 'vim-scripts/L9'
-  " Bundle 'vim-scripts/vcscommand.vim'
-  Bundle 'vim-scripts/tlib'
+" Let NeoBundle manage NeoBundle
+NeoBundle 'Shougo/neobundle.vim'
+" }}}
 
-  Bundle 'othree/html5.vim'
-  Bundle 'gregsexton/MatchTag'
-  " Bundle 'skammer/vim-css-color'
-  Bundle 'hail2u/vim-css3-syntax'
-  Bundle 'lukaszb/vim-web-indent'
-  Bundle 'walm/jshint.vim'
+" BUNDLES (plugins administrated by NeoBundle) {{{
 
-  Bundle 'miripiruni/CSScomb-for-Vim'
+" Shougo's way {{{
 
-  " HTML/HAML
-  " Bundle 'hokaccha/vim-html5validator'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
-  " CSS/LESS
-  " JavaScript
-  " Bundle 'pangloss/vim-javascript'
-  " Bundle 'itspriddle/vim-jquery'
-  " JSON
-  " Bundle 'leshill/vim-json'
+NeoBundle 'Shougo/unite.vim'
 
-  " Bundle 'tpope/vim-rails'
-  " Bundle 'tpope/vim-haml'
-  " Bundle 'kchmck/vim-coffee-script'
-  " Bundle 'klen/vim-jsmode'
-  " Bundle 'mattn/gist-vim'
+" Snipmate dependencies
+NeoBundle 'MarcWeber/vim-addon-mw-utils'
+NeoBundle 'tomtom/tlib_vim'
+" NeoBundle 'honza/snipmate-snippets'
 
-  if iCanHazVundle == 0
-    echo 'Installing Bundles, please ignore key map error messages'
-    echo ''
-    :BundleInstall
-  endif
-" Setting up Vundle - the vim plugin bundler end
+NeoBundle 'garbas/vim-snipmate'
+NeoBundle 'jpalardy/vim-slime'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
+" NeoBundle 'vim-scripts/FuzzyFinder'
+NeoBundle 'vim-scripts/L9'
+" NeoBundle 'vim-scripts/vcscommand.vim'
+NeoBundle 'vim-scripts/tlib'
+
+NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': ['html', 'css'] } }
+
+NeoBundle 'gregsexton/MatchTag'
+" NeoBundle 'skammer/vim-css-color'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'lukaszb/vim-web-indent'
+NeoBundle 'walm/jshint.vim'
+
+NeoBundle 'miripiruni/CSScomb-for-Vim'
+
+" HTML/HAML
+" NeoBundle 'hokaccha/vim-html5validator'
+
+" CSS/LESS
+" JavaScript
+" NeoBundle 'pangloss/vim-javascript'
+" NeoBundle 'itspriddle/vim-jquery'
+" JSON
+" NeoBundle 'leshill/vim-json'
+
+" NeoBundle 'tpope/vim-rails'
+" NeoBundle 'tpope/vim-haml'
+" NeoBundle 'kchmck/vim-coffee-script'
+" NeoBundle 'klen/vim-jsmode'
+" NeoBundle 'mattn/gist-vim'
+
+" END BUNDLES }}}
+
+" Auto install the plugins {{{
+
+" First-time plugins installation
+if iCanHazNeoBundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :NeoBundleInstall
+endif
+
+" Check if all of the plugins are already installed, in other case ask if we
+" want to install them (useful to add plugins in the .vimrc)
+NeoBundleCheck
+
+" }}}
 
 
 filetype plugin indent on
