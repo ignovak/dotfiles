@@ -74,6 +74,9 @@ NeoBundle 'walm/jshint.vim'
 
 NeoBundle 'miripiruni/CSScomb-for-Vim'
 
+" NeoBundleLazy 'ujihisa/unite-colorscheme', { 'autoload': { 'unite_sources': 'colorscheme' } }
+
+
 " HTML/HAML
 " NeoBundle 'hokaccha/vim-html5validator'
 
@@ -258,6 +261,9 @@ let g:solarized_termtrans=1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/'], '\|'))
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
+
+
+let g:unite_source_buffer_time_format = ''
 
 nmap <space> [unite]
 nnoremap [unite] <nop>
