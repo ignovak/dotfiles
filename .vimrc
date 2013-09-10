@@ -34,11 +34,11 @@ NeoBundle 'Shougo/neobundle.vim'
 
 " Vimproc to asynchronously run commands (NeoBundle, Unite)
 NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+            \ 'build' : {
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ }
 
 " Unite. The interface to rule almost everything
 NeoBundle 'Shougo/unite.vim'
@@ -59,7 +59,6 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-" NeoBundle 'vim-scripts/FuzzyFinder'
 NeoBundle 'vim-scripts/L9'
 " NeoBundle 'vim-scripts/vcscommand.vim'
 NeoBundle 'vim-scripts/tlib'
@@ -73,9 +72,6 @@ NeoBundle 'lukaszb/vim-web-indent'
 NeoBundle 'walm/jshint.vim'
 
 NeoBundle 'miripiruni/CSScomb-for-Vim'
-
-" NeoBundleLazy 'ujihisa/unite-colorscheme', { 'autoload': { 'unite_sources': 'colorscheme' } }
-
 
 " HTML/HAML
 " NeoBundle 'hokaccha/vim-html5validator'
@@ -187,8 +183,8 @@ set wildignore+=*.be.*,*.kk.*,*.tt.*,*.uk.*
 
 " Folding
 if has('folding')
-  set foldmethod=indent
-  set foldlevel=99
+    set foldmethod=indent
+    set foldlevel=99
 endif
 
 " Edit
@@ -208,14 +204,14 @@ set diffopt+=iwhite
 if has("autocmd")
 
     augroup vimrc
-    au!
+        au!
         " Auto reload vim settings
         au BufWritePost *.vim source $MYVIMRC
         au BufWritePost .vimrc source $MYVIMRC
 
         " Restore cursor position
         au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-          \| exe "normal g'\"" | endif
+                    \| exe "normal g'\"" | endif
 
         " Filetypes
         au FileType htmldjango set ft=html.htmldjango
@@ -257,11 +253,13 @@ let g:solarized_termcolors=256
 let g:solarized_contrast='high'
 let g:solarized_termtrans=1
 
+set background=light
+colorscheme solarized
+
 " Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/'], '\|'))
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
-
 
 let g:unite_source_buffer_time_format = ''
 
@@ -270,11 +268,9 @@ nnoremap [unite] <nop>
 
 nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
 nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -start-insert -buffer-name=files file_rec/async<cr>
-" nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-" nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
 nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
 nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-" nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
 " nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
 
 if executable('ag')
@@ -306,14 +302,13 @@ let delimitMate_matchpairs = '(:),[:],{:}'
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 
+" Save file by <leader>s
 nmap <leader>s :w<cr>
 imap <leader>s <esc>:w<cr>
 
 " OPTIMIZE: try to improve behavior
 nnoremap Q <c-w>s:bp<cr><c-w>j:bd<cr>
 " nnoremap Q :bd<cr>
-
-" vmap <expr> p strlen(getline('.')) == col('.') ? '"_dp' : '"_dP'
 
 nmap <leader>j :JSHint<cr>
 
@@ -327,22 +322,26 @@ nnoremap <silent> <leader>vi :e ~/.vimrc<cr>
 nnoremap <silent> <leader>vs :e ~/.vim/snippets/javascript.snippets
 nnoremap <silent> <leader>vp :vsp <c-r>=expand("%:h")<cr>/
 
+" Helpers for snipmate
 so ~/.vim/snippets/support_functions.vim
 
-" Some grep stuff
-" let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-nmap <leader>a :Ack 
-" nmap <m-f> g*:Ack <c-r>/ app
-
 " Slime-vim
+" Typical settings for tmux:
+" socket: "default"
+" pane: ":0.1"
+if executable('tmux')
+    let g:slime_target = "tmux"
+endif
 xmap gx <Plug>SlimeRegionSend
 " WARN: netrwPlugin has the same mapping
 nmap gx <Plug>SlimeParagraphSend
 
-command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
+if has('gui_running')
+    source ~/.vim/.gvimrc
+endif
 
 function! SQLUpperCase()
-  %s:\<analyze\>\|\<and\>\|\<as\>\|\<by\>\|\<desc\>\|\<exists\>\|\<explain\>\|\<from\>\|\<group\>\|\<in\>\|\<insert\>\|\<intersect\>\|\<into\>\|\<join\>\|\<limit\>\|\<not\>\|\<on\>\|\<order\>\|\<select\>\|\<set\>\|\<update\>\|\<where\>:\U&:gi
+    %s:\<analyze\>\|\<and\>\|\<as\>\|\<by\>\|\<desc\>\|\<exists\>\|\<explain\>\|\<from\>\|\<group\>\|\<in\>\|\<insert\>\|\<intersect\>\|\<into\>\|\<join\>\|\<limit\>\|\<not\>\|\<on\>\|\<order\>\|\<select\>\|\<set\>\|\<update\>\|\<where\>:\U&:gi
 endfunction
 
 " Creating macros
@@ -354,41 +353,3 @@ endfunction
 " Regexp notes
 " /text1\(text2\)\@= 'text1' followed by 'text2'
 " /\(text1\)\@<=text2  'text2' preceded with 'text1'
-
-" multiword search
-" vnoremap * yq/p<cr>
-
-set guifont=Monaco:h13
-
-" find global variables
-" ^\s*var \(\w\+\s*\(=.*\)\?,\(\s*\/\/.*\)\?\_\s\+\)\+\w\+\s*\(=.*\)\?;\_\s\+\w\+\s*\(=.*\)\?;
-
-function! JsStyling()
-  retab
-  KillWhitespace
-  %s:){:) {:e
-  %s:\(if\|while\|for\)\s*(\s*:\1 ( :e
-  %s:}\_\s*else\s*{:} else {:e
-  g:\<if\>\|\<for\>:s:\s*) {$: ) {:e
-  %s:\(\S\)\s*\(&&\|||\)\s*:\1 \2 :ge
-
-  s:[,;{]:&\r:g
-  s:}:\r&:g
-  s:=\([!=\s]\)\@!:= :g
-  s:\([!=\s]\)\@<!=: =:g
-endfunction
-
-set background=light
-colorscheme solarized
-
-if has('gui_running')
-  source ~/.vim/.gvimrc
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-if &term =~ "xterm"
-  let &t_ti = "\<Esc>[?47h"
-  let &t_te = "\<Esc>[?47l"
-endif
