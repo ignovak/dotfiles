@@ -1,5 +1,5 @@
 [user]
-    name = 'Igor Novak'
+    name = Igor Novak
 	email = vorian@yandex-team.ru
 
 [core]
@@ -59,13 +59,6 @@
 
 [diff]
     noprefix = true
-
-[url "git@github.yandex-team.ru:"]
-    pushInsteadOf = "ght:"
-    pushInsteadOf = "git://github.yandex-team.ru/"
-
-[url "git://github.yandex-team.ru/"]
-    insteadOf = "ght:"
 
 [url "git@github.com:"]
     pushInsteadOf = "gh:"
