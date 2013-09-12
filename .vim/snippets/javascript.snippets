@@ -236,3 +236,21 @@ snippet xhr
 		callback(xhr.responseText, xhr.status);
 	}
 	xhr.send();
+snippet jshint
+	/* jshint ${1:indent}: false */
+	
+snippet dbt
+	([
+		{
+			tech: 'js',
+			mustDeps: [
+				{
+					block: '${1}',
+					tech: 'bemhtml'
+				}
+			]
+		},
+		{
+			${2}
+		}
+	])
