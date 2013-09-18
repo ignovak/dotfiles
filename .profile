@@ -9,6 +9,7 @@ alias la='ls -la'
 alias ltr='ls -ltr'
 
 alias e=$EDITOR
+alias tm="tmux -2 -S /tmp/tm-$USER"
 
 _expand()
 {
