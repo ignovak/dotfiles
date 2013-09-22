@@ -60,6 +60,11 @@ _expand()
     return 0;
 }
 
+# Save ssh agent socket for using in tmux sessions
+if [[ $SSH_AUTH_SOCK && `readlink ~/.ssh/ssh_auth_sock` != $SSH_AUTH_SOCK ]]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
+
 # # command prompt
 # case $TERM in
 #     screen*)

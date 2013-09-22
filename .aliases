@@ -94,3 +94,6 @@ yxw()
     fi
     cd report/templates/YxWeb
 }
+
+# tmux
+alias tm="tmux -2 -S /tmp/tm-`whoami`"
