@@ -58,19 +58,19 @@ snippet cte
 snippet clv
 	console.log('${1:var}: ' + $1);${2}
 snippet cln
-	console.log("\n\033[31m");
+	console.log("\033[31m");
 	console.log(${1});
-	console.log("\033[0m\n");
+	console.log("\033[0m");
 snippet dmp
-	console.log("\n\033[31m");
+	console.log("\033[31m");
 	console.log(JSON.stringify(${1}, null, '  '))
-	console.log("\033[0m\n");
+	console.log("\033[0m");
 snippet clj
 	console.log(JSON.stringify(${1}));${2}
 snippet uw
 	Util.warn('\n\033[31m' + ${1} + '\033[0m');${2}
 snippet pd
-	e.preventDefault();${1}
+	e.preventDefault();
 snippet proto
 	${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
 		${4}

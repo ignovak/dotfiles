@@ -270,6 +270,7 @@ nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=m
 nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -start-insert -buffer-name=files file_rec/async<cr>
 nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
 nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]* :<C-u>UniteWithCursorWord -no-quit -buffer-name=search grep:.<cr>
 nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
 " nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
 

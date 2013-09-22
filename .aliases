@@ -96,4 +96,4 @@ yxw()
 }
 
 # tmux
-alias tm="tmux -2 -S /tmp/tm-`whoami`"
+alias tm='tmux -2 -S /tmp/campus'
