@@ -237,8 +237,8 @@ if has("autocmd")
 
         au BufRead,BufNewFile *.html nmap <leader>o :!open %<cr>
 
-        " Avoid syntax-highlighting for files larger than 1MB
-        au BufReadPre * if getfsize(expand("%")) > 1000*1024 | syntax off | endif
+        " Avoid syntax-highlighting for files larger than 10MB
+        au BufReadPre * if getfsize(expand("%")) > 10000*1024 | syntax off | endif
 
         " Auto close preview window
         autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
