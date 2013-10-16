@@ -47,14 +47,17 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'MarcWeber/vim-addon-mw-utils'
 NeoBundle 'tomtom/tlib_vim'
 " NeoBundle 'honza/snipmate-snippets'
-
 NeoBundle 'garbas/vim-snipmate'
+
+NeoBundle 'tpope/vim-fugitive'
+NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
+            \ 'autoload':{'commands':'Gitv'}}
+
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
@@ -72,6 +75,12 @@ NeoBundle 'lukaszb/vim-web-indent'
 NeoBundle 'walm/jshint.vim'
 
 NeoBundle 'miripiruni/CSScomb-for-Vim'
+
+NeoBundle 'ignovak/vim-translator'
+
+" NeoBundle 'ujihisa/unite-colorscheme'
+
+" NeoBundle 'vim-speeddating'
 
 " HTML/HAML
 " NeoBundle 'hokaccha/vim-html5validator'
@@ -161,15 +170,13 @@ set showmatch               " Show matching brackets
 set matchpairs+=<:>         " Make < and > match as well
 
 " Localization
-" Load russian spell files
-:silent ![ -f ~/.vim/spell/ru.utf-8.spl ] || wget --no-check-certificate https://github.com/klen/.vim/raw/master/spell/ru.utf-8.spl https://github.com/klen/.vim/raw/master/spell/ru.utf-8.sug -P ~/.vim/spell/
 set langmenu=none            " Always use english menu
 set keymap=russian-jcukenwin " Alternative keymap
 highlight lCursor guifg=NONE guibg=Cyan
 set iminsert=0               " English by default
 set imsearch=-1              " Search keymap from insert mode
-set spell
 set spelllang=en,ru          " Languages
+set spell
 set encoding=utf-8           " Default encoding
 set fileencodings=utf-8,cp1251,koi8-r,cp866
 set termencoding=utf-8
@@ -257,8 +264,9 @@ set background=light
 colorscheme solarized
 
 " Unite
+
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/'], '\|'))
+call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/', 'log/'], '\|'))
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
 
 let g:unite_source_buffer_time_format = ''
@@ -336,6 +344,11 @@ endif
 xmap gx <Plug>SlimeRegionSend
 " WARN: netrwPlugin has the same mapping
 nmap gx <Plug>SlimeParagraphSend
+
+let g:goog_user_conf = {
+            \ 'langpair': 'en|ru',
+            \ 'v_key': 'T'
+            \ }
 
 if has('gui_running')
     source ~/.vim/.gvimrc

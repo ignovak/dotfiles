@@ -67,6 +67,8 @@ sd()
     svn di $@ | colordiff
 }
 
+alias pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log'
+
 # serp
 all()
 {
