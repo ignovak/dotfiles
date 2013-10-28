@@ -2,6 +2,7 @@ export PATH=./node_modules/.bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/bi
 
 export EDITOR=vim
 export PAGER=less
+export TERM=screen-256color
 
 # http://habrahabr.ru/post/153871/
 export LESS_TERMCAP_mb=$MAGENTA
