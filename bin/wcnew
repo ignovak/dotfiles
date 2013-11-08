@@ -1,0 +1,50 @@
+#!/bin/bash
+
+if [[ $# < 2 ]]
+then
+    echo 'Usage:'
+    echo 'wcnew wc1 images3'
+    echo 'wcnew wc1 images3+video3+web3'
+    exit
+fi
+
+YXWEB_PATH=report/templates/YxWeb
+mkdir -p ~/$1/$YXWEB_PATH
+
+for PROJECT in ${2//+/ }
+do
+    if [[ $PROJECT =~ video || $PROJECT =~ images ]]
+    then
+        REPO=mm-interfaces
+        URL_PATH=${PROJECT%?}
+    else
+        REPO=serp
+    fi
+
+    cd ~/$1
+    ln -s $YXWEB_PATH/$PROJECT $PROJECT
+    cd $YXWEB_PATH
+    git clone git@github.yandex-team.ru:$REPO/$PROJECT
+
+    [ $? == 0 ] || exit 1
+
+    # Создаём симлинк video -> video2 (костыль для статики video2)
+    if [[ $PROJECT == video2 ]]; then
+        ln -s video2 video
+    fi
+
+    echo -e "\033[32m"
+    echo Дальнейшие действия:
+    echo "cd ~/$1/$PROJECT && make"
+
+    if [[ -n $URL_PATH ]]
+    then
+        if [[ $PROJECT =~ 3 ]]
+        then
+            BETA=.beta
+        fi
+        echo open `whoami`-d-$1$BETA.`hostname`/$URL_PATH
+    fi
+
+    echo -e "\033[0m"
+done
