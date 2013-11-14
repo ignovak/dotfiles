@@ -176,7 +176,7 @@ highlight lCursor guifg=NONE guibg=Cyan
 set iminsert=0               " English by default
 set imsearch=-1              " Search keymap from insert mode
 set spelllang=en,ru          " Languages
-set spell
+" set spell
 set encoding=utf-8           " Default encoding
 set fileencodings=utf-8,cp1251,koi8-r,cp866
 set termencoding=utf-8
