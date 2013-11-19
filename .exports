@@ -1,5 +1,6 @@
-export PATH=./node_modules/.bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/bin:$PATH:$HOME/node_modules/.bin:
+export PATH=./node_modules/.bin:$HOME/bin:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/sbin:$PATH:$HOME/node_modules/.bin:
 
+export PS1="`hostname | sed 's/\([a-z0-9]*\).*/\1/'`:\w $ "
 export EDITOR=vim
 export PAGER=less
 export TERM=screen-256color

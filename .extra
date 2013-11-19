@@ -1,2 +1,8 @@
 alias hol="cd /hol/arkanavt/report/templates/YxWeb"
 alias rep="cd /hol/arkanavt/report"
+
+# посмотреть логи рабочей копии
+wclog()
+{
+    tail -f /var/tmp/$USER-d-*
+}

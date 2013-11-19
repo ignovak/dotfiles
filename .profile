@@ -22,16 +22,6 @@ unset file
 
 source ~/dotfiles/git-completion.bash
 
-# export PS1="`whoami`@`hostname | sed 's/\..*//'`:\w > "
-HOST=`hostname | sed 's/\([a-z0-9]*\).*/\1/'`
-SCREEN_SESSION_NAME=`echo ${STY} | sed 's/[0-9]*\.//'`
-if [[ $SCREEN_SESSION_NAME == '' ]]
-then export PS1="$HOST:\w╰─ "
-else
-    export PS1="$HOST[$SCREEN_SESSION_NAME]: \w╰─ "
-fi
-unset HOST
-
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi

@@ -254,3 +254,20 @@ snippet dbt
 			${2}
 		}
 	])
+snippet server
+	var express = require('express')
+		fs = require('fs'),
+		app = express();
+
+	app.get('/', function(req, res) {
+		// res.redirect('404')
+		// res.send(fs.readFileSync('main.js'));
+		// var result = JSON.stringify({ success: true, result: 42 });
+		// if (req.query.callback)
+		//     res.send(req.query.callback + '(' + result + ')');
+		// else
+		//     res.send(result);
+		res.set('Content-Type', 'text/html');
+		res.send(fs.readFileSync('qwe.html'));
+	});
+	app.listen(3000);
