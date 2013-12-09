@@ -1,0 +1,12 @@
+#!/usr/local/bin/bash
+
+while true
+do
+    ATIME=`stat -f %m $1`
+    if [[ $ATIME != $LTIME ]]
+    then
+        echo $2 | bash
+        LTIME=$ATIME
+    fi
+    sleep 1
+done

@@ -81,6 +81,9 @@ all()
     elif [ `basename ${PWD%[0-9]}` == 'web' ]
     then
         es pages-desktop/search/all/_all.priv.js
+    elif [[ $PWD =~ 'touch' ]]
+    then
+        e pages-touch/common/_common.priv.js
     else
         e pages-desktop/common/_common.priv.js
     fi
