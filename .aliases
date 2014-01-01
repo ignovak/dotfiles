@@ -33,6 +33,7 @@ alias e=$EDITOR
 alias es='vim -c"sy off"'
 
 alias g1='git log -1'
+alias g9='git lol -9'
 alias s1='svn log -l1'
 
 # Git

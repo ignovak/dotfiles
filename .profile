@@ -87,3 +87,18 @@ jailunmount()
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# Tmux session alias for pair-programming
+# Syntax:
+#    Server:
+#        tm-pair <feature>
+#    Client:
+#        tm-pair <user> <feature>
+function tm-pair
+{
+    if [ ${2} ]; then
+        tmux -2 -S /tmp/tm-${1} attach -t ${2}
+    else
+        tmux -2 -S /tmp/tm-`whoami` new -s ${1}
+    fi
+}

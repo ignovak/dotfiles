@@ -269,7 +269,12 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/', 'log/'], '\|'))
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
 
-let g:unite_source_buffer_time_format = ''
+" let g:unite_source_buffer_time_format = ''
+" let g:unite_enable_start_insert = 1
+" let g:unite_split_rule = "botright"
+" let g:unite_force_overwrite_statusline = 0
+" let g:unite_winheight = 10
+" let g:unite_candidate_icon="▷"
 
 nmap <space> [unite]
 nnoremap [unite] <nop>
