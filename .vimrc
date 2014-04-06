@@ -94,6 +94,8 @@ NeoBundle 'ignovak/vim-translator'
 " NeoBundle 'klen/vim-jsmode'
 " NeoBundle 'mattn/gist-vim'
 
+" NeoBundle 'davidhalter/jedi-vim'
+
 " END BUNDLES }}}
 
 " Auto install the plugins {{{
