@@ -41,18 +41,20 @@ NeoBundle 'Shougo/vimproc', {
 
 NeoBundle 'Shougo/unite.vim'
 
-" Snipmate dependencies
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
-NeoBundle 'tomtom/tlib_vim'
+if has('lua')
+  NeoBundle 'Shougo/neocomplete'
+else
+  NeoBundle 'Shougo/neocomplcache'
+endif
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 " NeoBundle 'honza/snipmate-snippets'
-NeoBundle 'garbas/vim-snipmate'
 
 NeoBundle 'tpope/vim-fugitive'
 " NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
 "             \ 'autoload':{'commands':'Gitv'}}
 
 NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'mileszs/ack.vim'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tomtom/tcomment_vim'
@@ -60,7 +62,6 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'vim-scripts/L9'
 " NeoBundle 'vim-scripts/vcscommand.vim'
 NeoBundle 'vim-scripts/tlib'
 
@@ -69,8 +70,8 @@ NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': ['html', 'css'] }
 NeoBundle 'gregsexton/MatchTag'
 " NeoBundle 'skammer/vim-css-color'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'lukaszb/vim-web-indent'
-NeoBundle 'walm/jshint.vim'
+" NeoBundle 'lukaszb/vim-web-indent'
+" NeoBundle 'walm/jshint.vim'
 
 NeoBundle 'ignovak/vim-translator'
 
@@ -265,7 +266,7 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/', 'log/'], '\|'))
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
 
-" let g:unite_source_buffer_time_format = ''
+let g:unite_source_buffer_time_format = ''
 " let g:unite_enable_start_insert = 1
 " let g:unite_split_rule = "botright"
 " let g:unite_force_overwrite_statusline = 0
@@ -321,7 +322,7 @@ imap <leader>s <esc>:w<cr>
 nnoremap Q <c-w>s:bp<cr><c-w>j:bd<cr>
 " nnoremap Q :bd<cr>
 
-nmap <leader>j :JSHint<cr>
+" nmap <leader>j :JSHint<cr>
 
 " Open files
 " Do not set autochdir (working dir should be root)
@@ -329,12 +330,149 @@ nnoremap <leader>e :e <c-r>=expand("%:h")<cr>/
 nnoremap <leader>d :diffsplit <c-r>=expand("%:h")<cr>/
 cmap <leader>e <c-r>=expand("%:h")<cr>/
 
+" Neocomplete
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+
+" " Define dictionary.
+" let g:neocomplete#sources#dictionary#dictionaries = {
+"     \ 'default' : '',
+"     \ 'vimshell' : $HOME.'/.vimshell_hist',
+"     \ 'scheme' : $HOME.'/.gosh_completions'
+"     \ }
+
+if has('lua')
+  " Use neocomplete.
+  " let g:neocomplete#enable_at_startup = 1
+  " Use smartcase.
+  " let g:neocomplete#enable_smart_case = 1
+  " Set minimum syntax keyword length.
+  " let g:neocomplete#sources#syntax#min_keyword_length = 3
+  " let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+  " Define keyword.
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+  " Plugin key-mappings.
+  inoremap <expr><C-g>     neocomplete#undo_completion()
+  inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+  " Recommended key-mappings.
+  " <CR>: close popup and save indent.
+  " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  " function! s:my_cr_function()
+  "   return neocomplete#close_popup() . "\<CR>"
+  "   " For no inserting <CR> key.
+  "   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  " endfunction
+  " <TAB>: completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y>  neocomplete#close_popup()
+  inoremap <expr><C-e>  neocomplete#cancel_popup()
+  " Close popup by <Space>.
+  "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+  " AutoComplPop like behavior.
+  "let g:neocomplete#enable_auto_select = 1
+
+  " Shell like behavior(not recommended).
+  "set completeopt+=longest
+  "let g:neocomplete#enable_auto_select = 1
+  "let g:neocomplete#disable_auto_complete = 1
+  "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+else
+  " Use neocomplcache.
+  " let g:neocomplcache_enable_at_startup = 1
+  " Use smartcase.
+  " let g:neocomplcache_enable_smart_case = 1
+  " Set minimum syntax keyword length.
+  " let g:neocomplcache_min_syntax_length = 3
+  " let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+  " Define keyword.
+  if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+  endif
+  let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+  " Plugin key-mappings.
+  inoremap <expr><C-g>     neocomplcache#undo_completion()
+  inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+  " Recommended key-mappings.
+  " <CR>: close popup and save indent.
+  " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  " function! s:my_cr_function()
+  "   return neocomplcache#smart_close_popup() . "\<CR>"
+  "   " For no inserting <CR> key.
+  "   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+  " endfunction
+  " <TAB>: completion.
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " <C-h>, <BS>: close popup and delete backword char.
+  inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-y>  neocomplcache#close_popup()
+  inoremap <expr><C-e>  neocomplcache#cancel_popup()
+  " Close popup by <Space>.
+  "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+
+  " AutoComplPop like behavior.
+  "let g:neocomplcache_enable_auto_select = 1
+
+  " Shell like behavior(not recommended).
+  "set completeopt+=longest
+  "let g:neocomplcache_enable_auto_select = 1
+  "let g:neocomplcache_disable_auto_complete = 1
+  "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+endif
+
+
+
+" Neosnippet
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" set completeopt=menu
+
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
 nnoremap <silent> <leader>vi :e ~/.vimrc<cr>
 nnoremap <silent> <leader>vs :e ~/.vim/snippets/javascript.snippets
 nnoremap <silent> <leader>vp :vsp <c-r>=expand("%:h")<cr>/
 
 " Helpers for snipmate
 so ~/.vim/snippets/support_functions.vim
+
+
 
 " Slime-vim
 " Typical settings for tmux:

@@ -395,8 +395,6 @@ snippet bdbsn
 	border-bottom-style: none;
 snippet bdbc
 	border-bottom-color: #${1};${2}
-snippet bdln
-	border-length: ${1};${2}
 snippet bdl+
 	border-left: 1px solid #${1};${2}
 snippet bdln
@@ -946,5 +944,7 @@ snippet mop
 	@media all and (orientation: portrait) {
 		${1}
 	}
+snippet b64
+	url(data:image/jpg;base64,${1})${2}
 snippet svg
 	url(data:image/svg+xml,${1})${2}

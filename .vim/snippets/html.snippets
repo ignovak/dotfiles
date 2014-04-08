@@ -1,5 +1,6 @@
 # Some useful Unicode entities
 # Non-Breaking Space
+# ™
 snippet tm
 	&trade;
 snippet quot
@@ -128,27 +129,25 @@ snippet aside#
 snippet audio
 	<audio src='${1}'>${2}</audio>
 snippet b
-	<b>${1}</b>${2}
+options word
+    <b>${1:TARGET}</b>${2}
 snippet base
 	<base href='${1}' target='${2}' />
-snippet bdi
-	<bdi>${1}</bdo>
 snippet bdo
-	<bdo dir='${1}'>${2}</bdo>
-snippet bdo:l
-	<bdo dir='ltr'>${1}</bdo>
-snippet bdo:r
-	<bdo dir='rtl'>${1}</bdo>
+options word
+    <bdo dir="${1:rtl}">${2:TARGET}</bdo>${3}
 snippet blockquote
-	<blockquote>
-		${1}
-	</blockquote>
+    <blockquote>
+    ${1}
+    </blockquote>
+    ${2}
 snippet body
-	<body>
-		${1}
-	</body>
+    <body>
+       ${1:TARGET}
+    </body>
+
 snippet br
-	<br />
+	<br>
 snippet button
 	<button type='${1:submit}'>${2}</button>
 snippet button.
@@ -202,13 +201,16 @@ snippet datatemplate
 		${1}
 	</datatemplate>
 snippet dd
-	<dd>${1}</dd>
+options word
+    <dd>${1:TARGET}</dd>${2}
+
 snippet dd.
 	<dd class='${1}'>${2}</dd>
 snippet dd#
 	<dd id='${1}'>${2}</dd>
 snippet del
-	<del>${1}</del>
+options word
+    <del>${1:TARGET}</del>${2}
 snippet details
 	<details>${1}</details>
 snippet dfn
@@ -226,13 +228,12 @@ snippet div.
 		${2}
 	</div>
 snippet div#
-	<div id='${1}'>
-		${2}
-	</div>
+options word
+    <div ${1:id="${2:someid\}"}>${3:TARGET}</div>${4}
 snippet dl
-	<dl>
-		${1}
-	</dl>
+options word
+    <dl>${1:TARGET}</dl>${2}
+
 snippet dl.
 	<dl class='${1}'>
 		${2}
@@ -248,7 +249,9 @@ snippet dl+
 		dt+${3}
 	</dl>
 snippet dt
-	<dt>${1}</dt>
+options word
+    <dt>${1:TARGET}</dt>${2}
+
 snippet dt.
 	<dt class='${1}'>${2}</dt>
 snippet dt#
@@ -258,7 +261,8 @@ snippet dt+
 	<dd>${2}</dd>
 	dt+${3}
 snippet em
-	<em>${1}</em>
+options word
+    <em>${1:TARGET}</em>${2}
 snippet embed
 	<embed src=${1} type='${2}' />
 snippet fieldset
@@ -311,45 +315,36 @@ snippet form#
 		${3}
 		<p><input type='submit' value='Submit' /></p>
 	</form>
-snippet h1
-	<h1>${1}</h1>
+snippet h
+options word
+    <h${1:1}>${2}</h$1>${3}
 snippet h1.
 	<h1 class='${1}'>${2}</h1>
 snippet h1#
 	<h1 id='${1}'>${2}</h1>
-snippet h2
-	<h2>${1}</h2>
 snippet h2.
 	<h2 class='${1}'>${2}</h2>
 snippet h2#
 	<h2 id='${1}'>${2}</h2>
-snippet h3
-	<h3>${1}</h3>
 snippet h3.
 	<h3 class='${1}'>${2}</h3>
 snippet h3#
 	<h3 id='${1}'>${2}</h3>
-snippet h4
-	<h4>${1}</h4>
 snippet h4.
 	<h4 class='${1}'>${2}</h4>
 snippet h4#
 	<h4 id='${1}'>${2}</h4>
-snippet h5
-	<h5>${1}</h5>
 snippet h5.
 	<h5 class='${1}'>${2}</h5>
 snippet h5#
 	<h5 id='${1}'>${2}</h5>
-snippet h6
-	<h6>${1}</h6>
 snippet h6.
 	<h6 class='${1}'>${2}</h6>
 snippet h6#
 	<h6 id='${1}'>${2}</h6>
 snippet head
 	<head>
-		<meta http-equiv='Content-type' content='text/html; charset=utf-8' />
+		<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
 
 		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
 		${2}
@@ -375,7 +370,7 @@ snippet hgroup.
 		${2}
 	</hgroup>
 snippet hr
-	<hr />
+	<hr>
 snippet i
 	<i>${1}</i>${2}
 snippet iframe
@@ -446,27 +441,16 @@ snippet input:url
 snippet input:week
 	<input type='week' name='${1}' id='${2:$1}' value='${3}' />${4}
 snippet ins
-	<ins>${1}</ins>
+options word
+    <ins>${1:TARGET}</ins>${2}
 snippet kbd
 	<kbd>${1}</kbd>
 snippet keygen
 	<keygen>${1}</keygen>
-snippet label
-	<label for='${1}'>${2}</label>${3}
-snippet label:i
-	<label for='${2:$1}'>${1}</label>
-	<input type='${3:text/submit/hidden/button}' name='${4:$2}' id='${5:$2}' value='${6}' />${7}
-snippet label:s
-	<label for='${2:$1}'>${1}</label>
-	<select name='${3:$2}' id='${4:$2}'>
-		<option value='${5}'>${6:$5}</option>
-	</select>
-snippet legend
-	<legend>${1}</legend>
-snippet legend+
-	<legend><span>${1}</span></legend>
 snippet li
-	<li>${1}</li>
+options word
+    <li>${1:TARGET}</li>${2}
+
 snippet li.
 	<li class='${1}'>${2}</li>
 snippet li+
@@ -478,11 +462,9 @@ snippet lia+
 	<li><a href='${2:#}'>${1}</a></li>
 	lia+${3}
 snippet link
-	<link rel='${1}' href='${2}' title='${3}' type='${4}' />${5}
+    <link rel='${1:stylesheet}' href='${2}.css' type='text/css' media='${3:screen}' charset='utf-8'>${4}
 snippet link:atom
 	<link rel='alternate' href='${1:atom.xml}' title='Atom' type='application/atom+xml' />${2}
-snippet link:css
-	<link rel='stylesheet' href='${2:style.css}' type='text/css' media='${3:all}' />${4}
 snippet link:favicon
 	<link rel='shortcut icon' href='${1:favicon.ico}' type='image/x-icon' />${2}
 snippet link:rss
@@ -490,47 +472,25 @@ snippet link:rss
 snippet link:touch
 	<link rel='apple-touch-icon' href='${1:favicon.png}' />${2}
 snippet css
-	<link rel='stylesheet' href='${1:style.css}' />${2}
+    <link rel='stylesheet' href='${1}.css' media='${2:screen}'>${3}
 snippet favicon
 	<link rel='shortcut icon' href='${1:/favicon.png}' />${2}
-snippet map
-	<map name='${1}'>
-		${2}
-	</map>
-snippet map.
-	<map class='${1}' name='${2}'>
-		${3}
-	</map>
-snippet map#
-	<map name='${1}' id='${2:$1}>
-		${3}
-	</map>
-snippet map+
-	<map name='${1}'>
-		<area shape='${2}' coords='${3}' href='${4}' alt='${5}' />${6}
-	</map>${7}
-snippet mark
-	<mark>${1}</mark>
-snippet menu
-	<menu>
-		${1}
-	</menu>
-snippet menu:c
-	<menu type='context'>
-		${1}
-	</menu>
-snippet menu:t
-	<menu type='toolbar'>
-		${1}
-	</menu>
-snippet meta
-	<meta http-equiv='${1}' content='${2}' />${3}
-snippet meta:compat
-	<meta http-equiv='X-UA-Compatible' content='IE=${1:7,8,edge}' />${3}
+snippet metaauthor
+    <meta name='author' content='${1}'>${2}
+snippet metakeywords
+    <meta name='keywords' content='${1}'>${2}
+snippet metaothers
+    <meta name='others' content='${1}'>${2}
+snippet metagenerator
+    <meta name='generator' content='${1}'>${2}
+snippet metadescription
+    <meta name='description' content='${1}'>${2}
+snippet metaie
+	<meta http-equiv='X-UA-Compatible' content='IE=${1:edge}'>${2}
 snippet meta:refresh
-	<meta http-equiv='refresh' content='text/html;charset=UTF-8' />${3}
-snippet meta:utf
-	<meta http-equiv='content-type' content='text/html;charset=UTF-8' />${3}
+	<meta http-equiv='refresh' content='text/html;charset=utf-8'>
+snippet metautf
+	<meta http-equiv='content-type' content='text/html;charset=utf-8'>
 snippet meter
 	<meter>${1}</meter>
 snippet nav
@@ -567,9 +527,21 @@ snippet movie
 			pluginspage='http://www.apple.com/quicktime/download/' />
 	</object>${6}
 snippet ol
-	<ol>
-		${1}
-	</ol>
+options word
+    <ol>${1:TARGET}</ol>${2}
+snippet olA
+options word
+    <ol type="A">${1:TARGET}</ol>${2}
+snippet ola
+options word
+    <ol type="a">${1:TARGET}</ol>${2}
+snippet olI
+options word
+    <ol type="I">${1:TARGET}</ol>${2}
+snippet oli
+options word
+    <ol type="i">${1:TARGET}</ol>${2}
+
 snippet ol.
 	<ol class='${1}>
 		${2}
@@ -596,13 +568,15 @@ snippet optgroup
 snippet output
 	<output>${1}</output>
 snippet p
-	<p>${1}</p>
+options word
+    <p>${1}</p>${2}
+
 snippet param
 	<param name='${1}' value='${2}' />${3}
 snippet pre
-	<pre>
-		${1}
-	</pre>
+    <pre>
+    ${1:TARGET}
+    </pre>${2}
 snippet progress
 	<progress>${1}</progress>
 snippet q
@@ -622,9 +596,10 @@ snippet samp
 		${1}
 	</samp>
 snippet scr
-	<script>
-		${1}
-	</script>
+    <script>
+    ${1:TARGET}
+    </script>${2}
+
 snippet sscr
 	<script src='${1:script}.js'></script>${2}
 snippet jquery
@@ -661,19 +636,22 @@ snippet source
 snippet span
 	<span>${1}</span>${2}
 snippet strong
-	<strong>${1}</strong>${2}
+options word
+    <strong>${1:TARGET}</strong>${2}
 snippet style
 	<style>
 		${2}
 	</style>
 snippet sub
-	<sub>${1}</sub>
+options word
+    <sub>${1:TARGET}</sub>${2}
 snippet summary
 	<summary>
 		${1}
 	</summary>
 snippet sup
-	<sup>${1}</sup>
+options word
+    <sup>${1:TARGET}</sup>${2}
 snippet table
 	<table border='${1:0}'>
 		${2}
@@ -719,7 +697,9 @@ snippet tfoot+
 		<tr><th>${1:Header}</th></tr>
 	</tfoot>
 snippet th
-	<th>${1}</th>${2}
+options word
+    <th>${1:TARGET}</th>${2}
+
 snippet th.
 	<th class='${1}'>${2}</th>
 snippet th#
@@ -834,3 +814,45 @@ snippet svg
 	<svg xmlns='http://www.w3.org/2000/svg'>
 		${1}
 	</svg>
+
+snippet ulsquare
+options word
+    <ul type="square">${1:TARGET}</ul>${2}
+snippet ulcircle
+options word
+    <ul type="circle">${1:TARGET}</ul>${2}
+snippet uldisc
+options word
+    <ul type="disc">${1:TARGET}</ul>${2}
+
+snippet inputtext
+options word
+    <input type="text" name="${1:user}">${2}
+
+snippet inputpassword
+options word
+    <input type="password" name="${1:password}">${2}
+
+snippet inputradio
+options word
+    <input type="radio" name="${1}" value="value">${2}
+
+snippet inputcheckbox
+options word
+    <input type="checkbox" name="${1}">${2}
+
+snippet label
+options word
+    <label>${1}: <input type='${2:TARGET}' /><label>${3}
+
+snippet labelfor
+options word
+    <label for='${1}:id'>${2:TARGET}</label>${3}
+
+snippet id
+options word
+    id='${1}'${2}
+
+snippet class
+options word
+    class='${1}'${2}
