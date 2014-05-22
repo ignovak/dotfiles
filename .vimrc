@@ -70,7 +70,7 @@ NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': ['html', 'css'] }
 NeoBundle 'gregsexton/MatchTag'
 " NeoBundle 'skammer/vim-css-color'
 NeoBundle 'hail2u/vim-css3-syntax'
-" NeoBundle 'lukaszb/vim-web-indent'
+NeoBundle 'ignovak/vim-web-indent'
 " NeoBundle 'walm/jshint.vim'
 
 NeoBundle 'ignovak/vim-translator'
