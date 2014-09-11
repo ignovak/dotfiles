@@ -53,6 +53,12 @@
 	# Show files ignored by git:
 	ign = ls-files -o -i --exclude-standard
 
+	# Search commits by message
+	search = "!f() { git log --all --grep=$1; }; f"
+
+	# Find merge commit. Usage: `git fm 0c23f92`.
+	fm = "!sh -c 'git show `git rev-list --ancestry-path $0..dev --merges | tail -f`'"
+
 [diff]
 	noprefix = true
 
