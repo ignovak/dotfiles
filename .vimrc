@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 set nocompatible
 
 filetype off             " Turn off filetype plugins before bundles init
