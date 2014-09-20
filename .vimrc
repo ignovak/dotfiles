@@ -209,50 +209,50 @@ set diffopt=filler
 set diffopt+=vertical
 set diffopt+=iwhite
 
-if has("autocmd")
+augroup vimrc
+  autocmd!
 
-    augroup vimrc
-        au!
-        " Auto reload vim settings
-        au BufWritePost *.vim source $MYVIMRC
-        au BufWritePost .vimrc source $MYVIMRC
+  autocmd FileType vim setlocal sw=2
+  autocmd FileType vim setlocal ts=2
+  autocmd FileType vim setlocal sts=2
+  autocmd FileType vim nnoremap <leader>x 0y$:<c-r>"<cr>
 
-        " Restore cursor position
-        au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-                    \| exe "normal g'\"" | endif
+  " Auto reload vim settings
+  autocmd BufWritePost *.vim source $MYVIMRC
+  autocmd BufWritePost .vimrc source $MYVIMRC
 
-        " Filetypes
-        au FileType htmldjango set ft=html.htmldjango
+  " Restore cursor position
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+              \| exe "normal g'\"" | endif
 
-        au FileType vim setlocal sw=2
-        au FileType vim setlocal ts=2
-        au FileType vim setlocal sts=2
-        au FileType vim nnoremap <leader>x 0y$:<c-r>"<cr>
+  " Filetypes
+  autocmd FileType htmldjango set ft=html.htmldjango
 
-        au FileType scss set ft=scss.css
-        au! FileType sass,scss syn cluster sassCssAttributes add=@cssColors
+  autocmd FileType scss set ft=scss.css
+  autocmd! FileType sass,scss syn cluster sassCssAttributes add=@cssColors
 
-        au BufRead,BufNewFile *.js set ft=javascript.javascript-jquery
-        au BufRead,BufNewFile *.json set ft=javascript
-        " au BufRead,BufNewFile *.json set equalprg=python\ -mjson.tool
-        au BufRead,BufNewFile *.xjst set ft=javascript
+  autocmd BufRead,BufNewFile *.json set ft=javascript
+  " autocmd BufRead,BufNewFile *.json set equalprg=python\ -mjson.tool
+  autocmd BufRead,BufNewFile *.js set ft=javascript.javascript-jquery
 
-        au BufRead,BufNewFile *.less set ft=less.css
+  autocmd BufRead,BufNewFile *.less set ft=less.css
 
-        au BufRead,BufNewFile *.plaintex set ft=plaintex.tex
+  autocmd BufRead,BufNewFile *.plaintex set ft=plaintex.tex
 
-        au BufRead,BufNewFile *.html nmap <leader>o :!open %<cr>
+  autocmd BufRead,BufNewFile *.html nmap <leader>o :!open %<cr>
 
-        " Avoid syntax-highlighting for files larger than 10MB
-        au BufReadPre * if getfsize(expand("%")) > 10000*1024 | syntax off | endif
+  " Avoid syntax-highlighting for files larger than 10MB
+  autocmd BufReadPre * if getfsize(expand("%")) > 10000*1024 | syntax off | endif
 
-        " Auto close preview window
-        autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-        autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 
-    augroup END
+  " NeoComplete, Neosnippet
+  " Auto close preview window
+  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+  autocmd InsertLeave * NeoSnippetClearMarkers
 
-endif
+augroup END
 
 set t_Co=256
 let g:solarized_termcolors=256
@@ -305,7 +305,6 @@ nmap <silent> <leader>t :NERDTreeToggle<CR>
 nmap <silent> <leader>f :NERDTreeFind<CR>
 
 " fugitive
-autocmd BufReadPost fugitive://* set bufhidden=delete
 nmap <silent> <leader>b :.Gblame<cr>
 vmap <silent> <leader>b :Gblame<cr>
 nmap <silent> <leader>g :Gstatus<cr>
@@ -457,7 +456,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-autocmd InsertLeave * NeoSnippetClearMarkers
 
 let g:neosnippet#disable_runtime_snippets = {
       \   '_' : 1,
