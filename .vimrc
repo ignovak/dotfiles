@@ -2,37 +2,20 @@ scriptencoding utf-8
 
 set nocompatible
 
-filetype off             " Turn off filetype plugins before bundles init
-
-
 " NEOBUNDLE {{{ ===============================================================
 
-" NeoBundle auto-installation and setup {{{
+filetype off             " Turn off filetype plugins before bundles init
 
-" Auto installing NeoBundle
-let iCanHazNeoBundle=1
-let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
-if !filereadable(neobundle_readme)
-    echo "Installing NeoBundle.."
-    echo ""
-    silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
-    let iCanHazNeoBundle=0
-endif
-
-" Call NeoBundle
 if has('vim_starting')
-    set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand($HOME.'/.vim/bundle/'))
 
-" Let NeoBundle manage NeoBundle
-NeoBundle 'Shougo/neobundle.vim'
-" }}}
+let g:neobundle#types#git#clone_depth = 1
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " BUNDLES (plugins administrated by NeoBundle) {{{
-
-" Shougo's way {{{
 
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
@@ -101,23 +84,14 @@ NeoBundle 'ignovak/vim-translator'
 
 " END BUNDLES }}}
 
-" Auto install the plugins {{{
+call neobundle#end()
 
-" First-time plugins installation
-if iCanHazNeoBundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :NeoBundleInstall
-endif
+filetype plugin indent on
 
-" Check if all of the plugins are already installed, in other case ask if we
-" want to install them (useful to add plugins in the .vimrc)
 NeoBundleCheck
 
 " }}}
 
-
-filetype plugin indent on
 syntax on
 
 " General options
