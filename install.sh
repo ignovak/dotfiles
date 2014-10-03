@@ -6,7 +6,13 @@ for f in `find . -name '\.*' -exec basename {} \; | grep -v 'git\|\.$\|bash\|exp
 do
     ln -fs $PWD/$f ~
 done
+
+GIT_AUTHOR_NAME=`git config --global user.name`
+GIT_AUTHOR_EMAIL=`git config --global user.email`
 cp .gitconfig ~/.gitconfig
+git config --global user.name "$GIT_AUTHOR_NAME"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
+
 source ~/.profile
 
 echo Fetch/update neobundle.vim
