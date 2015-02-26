@@ -59,6 +59,9 @@
 	# Find merge commit. Usage: `git fm 0c23f92`.
 	fm = "!sh -c 'git show `git rev-list --ancestry-path $0..dev --merges | tail -f`'"
 
+[tag]
+	sort = version:refname
+
 [diff]
 	noprefix = true
 
