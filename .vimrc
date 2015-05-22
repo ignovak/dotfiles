@@ -71,6 +71,7 @@ NeoBundle 'ignovak/vim-translator'
 " JavaScript
 " NeoBundle 'pangloss/vim-javascript'
 " NeoBundle 'itspriddle/vim-jquery'
+NeoBundle 'wavded/vim-stylus'
 " JSON
 " NeoBundle 'leshill/vim-json'
 
@@ -203,6 +204,7 @@ augroup vimrc
   autocmd FileType htmldjango set ft=html.htmldjango
 
   autocmd FileType scss set ft=scss.css
+  autocmd FileType stylus set ft=stylus.sass
   autocmd! FileType sass,scss syn cluster sassCssAttributes add=@cssColors
 
   autocmd BufRead,BufNewFile *.json set ft=javascript
