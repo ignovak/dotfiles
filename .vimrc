@@ -81,6 +81,8 @@ NeoBundle 'wavded/vim-stylus'
 " NeoBundle 'klen/vim-jsmode'
 " NeoBundle 'mattn/gist-vim'
 
+NeoBundle 'http://www.vim.org/scripts/download_script.php?src_id=4316',
+      \ { 'type__filename' : 'python.vim', 'script_type' : 'indent' }
 " NeoBundle 'davidhalter/jedi-vim'
 
 " END BUNDLES }}}
