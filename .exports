@@ -6,7 +6,6 @@ export PATH=bin:$PATH
 
 export NODE_PATH=./node_modules:$NODE_PATH
 
-export PS1="`hostname | sed 's/\([a-z0-9]*\).*/\1/'`:\w $ "
 export EDITOR=vim
 export PAGER=less
 
@@ -25,8 +24,6 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:st:sup:gs:fg"
-
-export LANG=ru_RU.UTF-8
 
 # fix sorting against underscores
 export LC_COLLATE=C

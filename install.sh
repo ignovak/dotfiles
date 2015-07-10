@@ -33,3 +33,9 @@ tar xf neobundle.tar.gz
 mv neobundle.vim-master .vim/bundle/neobundle.vim
 rm neobundle.tar.gz
 echo Done
+
+which zsh > /dev/null || exit
+
+echo Install oh-my-zsh
+curl https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | zsh
+chsh -s $(which zsh)

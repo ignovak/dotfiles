@@ -1,7 +1,9 @@
-for file in ~/.{path,exports,aliases,extra}; do
+for file in ~/dotfiles/.{path,prompt,exports,extra}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
+
+[ "$BASH" ] && [ ! "$IS_BASHRC_LOADED" ] && source ~/dotfiles/.bashrc
 
 if [[ -z `git config user.name` ]]; then
     echo -n "Please, enter user name for git config [Name Surname (nickname)]: "
@@ -17,21 +19,10 @@ if [[ -z `git config user.email` ]]; then
     git config -f ~/.config/git/config user.email "$GIT_AUTHOR_EMAIL"
 fi
 
-alias ll='ls -laFo'
-alias l='ls -l'
-alias la='ls -la'
-alias ltr='ls -ltr'
-
 alias e=$EDITOR
 alias tm="tmux -2 -S /tmp/tm-$USER"
 
-# Save ssh agent socket for using in tmux sessions
-if [[ $SSH_AUTH_SOCK && $SSH_AUTH_SOCK != $HOME/.ssh/ssh_auth_sock ]]
-then
-    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
-fi
-
-_expand()
-{
-    return 0;
-}
+# _expand()
+# {
+#     return 0;
+# }
