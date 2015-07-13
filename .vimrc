@@ -60,6 +60,8 @@ NeoBundle 'ignovak/vim-web-indent'
 
 NeoBundle 'ignovak/vim-translator'
 
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
+
 " NeoBundle 'ujihisa/unite-colorscheme'
 
 " NeoBundle 'vim-speeddating'
