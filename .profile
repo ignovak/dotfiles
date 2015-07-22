@@ -3,16 +3,18 @@ for file in ~/.{path,exports,aliases,extra}; do
 done
 unset file
 
-if [[ -z `git config --global user.name` ]]; then
-    echo -n "Please, enter user name for git config: "
+if [[ -z `git config user.name` ]]; then
+    echo -n "Please, enter user name for git config [Name Surname (nickname)]: "
     read GIT_AUTHOR_NAME
-    git config --global user.name "$GIT_AUTHOR_NAME"
+    mkdir -p ~/.config/git/
+    git config -f ~/.config/git/config user.name "$GIT_AUTHOR_NAME"
 fi
 
-if [[ -z `git config --global user.email` ]]; then
+if [[ -z `git config user.email` ]]; then
     echo -n "Please, enter email for git config: "
     read GIT_AUTHOR_EMAIL
-    git config --global user.email "$GIT_AUTHOR_EMAIL"
+    mkdir -p ~/.config/git/
+    git config -f ~/.config/git/config user.email "$GIT_AUTHOR_EMAIL"
 fi
 
 alias ll='ls -laFo'

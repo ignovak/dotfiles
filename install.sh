@@ -7,11 +7,12 @@ do
     ln -fs $PWD/$f ~
 done
 
-GIT_AUTHOR_NAME=`git config --global user.name`
-GIT_AUTHOR_EMAIL=`git config --global user.email`
-cp .gitconfig ~/.gitconfig
-git config --global user.name "$GIT_AUTHOR_NAME"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+GIT_AUTHOR_NAME=`git config user.name`
+GIT_AUTHOR_EMAIL=`git config user.email`
+[ -f ~/.gitconfig ] || ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+mkdir -p ~/.config/git/
+git config -f ~/.config/git/config user.name "$GIT_AUTHOR_NAME"
+git config -f ~/.config/git/config user.email "$GIT_AUTHOR_EMAIL"
 
 source ~/.profile
 
