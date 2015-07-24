@@ -1,9 +1,28 @@
 [core]
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
+	quotepath = false # Fix cyrillic in paths
+
+[diff]
+	noprefix = true
+	# tool = ws
+	algorithm = patience
 
 [merge]
-	tool = vimdiff
+	tool = vimdiff  # ws
 	log = true
+	conflictstyle = diff3
+
+[mergetool "ws"]
+	cmd = webide merge $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE") $(cd $(dirname "$BASE") && pwd)/$(basename "$BASE") $(cd $(dirname "$MERGED") && pwd)/$(basename "$MERGED")
+	trustExitCode = true
+
+[mergetool "splice"]
+	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	trustExitCode = true
+
+[difftool "ws"]
+	cmd = webide diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+	trustExitCode = true
 
 [branch]
 	autosetuprebase = always
@@ -40,10 +59,12 @@
 	dc = diff --cached
 	ds = diff --staged
 	lg = log -p
+	l = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	lod = log --graph --decorate --format='%h %ad %s' --date=short
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	hist = log --pretty=format:'%C(yellow)%h%C(reset) %ad | %C(75)%s%C(reset) %C(yellow)%d%C(reset) [%an]' --graph --date=short --branches --all
+	pr = pull-request
 	rb = rebase
 	ls = ls-files
 	am = commit --amend
@@ -62,9 +83,6 @@
 [tag]
 	sort = version:refname
 
-[diff]
-	noprefix = true
-
 [url "git@github.com:"]
 	pushInsteadOf = "gh:"
 	pushInsteadOf = "git://github.com/"
@@ -74,3 +92,9 @@
 
 [help]
 	autocorrect = 1
+
+[rebase]
+	autoStash = true
+
+[pull]
+	rebase = true
