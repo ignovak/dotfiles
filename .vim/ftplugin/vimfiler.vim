@@ -1,4 +1,7 @@
+nunmap <buffer><Bs>
+
 nmap <buffer><cr> <Plug>(vimfiler_expand_or_edit)
+nmap <buffer><Bs> :VimFilerClose default<CR>
 nmap <buffer><Left> <Plug>(vimfiler_smart_h)
 nmap <buffer><Right> <Plug>(vimfiler_smart_l)
 nmap <buffer>p <Plug>(vimfiler_jump_first_child)k
