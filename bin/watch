@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+if [[ $# == 0 || $# == 1 ]]; then
+    echo Usage:
+    echo     watch test.js 'node test.js'
+    echo     watch test1.js test2.js 'node test.js'
+    echo     watch * 'node test.js'
+    exit 1
+fi
+
+FILES=("$@")
+
+while true
+do
+    ATIME=''
+    for file in "${FILES[@]:0:$#-1}"
+    do
+        if [[ $OSTYPE =~ linux ]]; then
+            ATIME="$ATIME `stat -c %Y $file`"
+        else
+            ATIME="$ATIME `stat -f %m $file`"
+        fi
+    done
+    if [[ $ATIME != $LTIME ]]
+    then
+        echo ${FILES[$(($#-1))]} | bash
+        LTIME=$ATIME
+    fi
+    sleep 1
+done
