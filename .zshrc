@@ -68,6 +68,10 @@ setopt noclobber # >, >! — rewrite safety
 
 source ~/.profile
 
+# Fix `zsh: no matches found: HEAD^` error
+# See https://github.com/robbyrussell/oh-my-zsh/issues/449
+unsetopt nomatch
+
 # ^Z instead of `fg`
 fancy-ctrl-z () {
     if [[ $#BUFFER -eq 0 ]]; then
