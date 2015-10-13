@@ -3,6 +3,7 @@ export PATH=~/node_modules/.bin:$PATH
 export PATH=./node_modules/.bin:$PATH
 export PATH=.bin:$PATH
 export PATH=bin:$PATH
+export PATH=$PATH:$HOME/.rvm/bin
 
 export NODE_PATH=./node_modules:$NODE_PATH
 
