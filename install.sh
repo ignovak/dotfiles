@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")"
 git pull
-for f in `find . -name '\.*' -exec basename {} \; | grep -v 'git\|\.$\|bash\|exports\|prompt'`
+for f in `ls -1 -ad ./.* | grep -v 'git\|bash\|exports\|prompt\|\.$'`
 do
     if [ -f ~/$f ]; then
         mv ~/$f ~/$f.bk
