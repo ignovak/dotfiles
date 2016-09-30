@@ -1,5 +1,3 @@
-snippet d
-    debugger
 snippet fu
     function ${1}(${2}) {
         ${3}
@@ -10,10 +8,11 @@ snippet clos
     })();
 snippet r
     return
+
 snippet re
+options word
     require('${1}')${2}
-snippet pr
-    prototype
+
 snippet for
 options head
   for (var ${1:i} = 0; $1 < ${2:#:Things}.length; ++$1) {
@@ -43,16 +42,10 @@ snippet switch
     }
 snippet cl
     console.log(${1});
-snippet ctb
-    console.table(${1});
-snippet cw
-    console.warning(${1});${2}
-snippet ce
-    console.error(${1});${2}
 snippet ct
-    console.time('${1}');${2}
-snippet cte
-    console.timeEnd('${1}');${2}
+    console.time('a');
+    ${1}
+    console.timeEnd('a');
 snippet cla
     console.log(arguments);
 snippet clv
@@ -71,8 +64,6 @@ snippet proto
     ${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
         ${4}
     };
-snippet t
-    I18n.t('${1:type.key}', { defaultValue: '${2}' })${3}
 snippet sett
     setTimeout(function() {
         ${2}
@@ -107,7 +98,7 @@ snippet has
 snippet set
     set({ '${1}': '${2}' })${3}
 snippet ext
-    _.extend(${1}, ${2})
+    _.assign(${1}, ${2})
 snippet keys
     Object.keys(${1})${2}
 snippet each
@@ -240,6 +231,12 @@ options head
 
 snippet promise
 options word
+    new Promise(function(resolve, reject) {
+        ${1}
+    });
+
+snippet vowpromise
+options word
     new vow.Promise(function(resolve, reject, notify) {
         ${1}
     });
@@ -249,3 +246,44 @@ options head
     /**
      * ${1}
      */
+
+snippet def
+options head
+    define(function(require, exports, module) {
+        'use strict';
+
+        // @ngInject
+        exports.${1} = function() {
+        };
+    });
+
+snippet spec
+options head
+    /* global angular, inject */
+
+    describe('Main Controller', function() {
+        'use strict';
+
+        var
+            ctrl,
+            scope;
+
+        angular.module('mainControllerTest', [require('core').name])
+            .controller(require('./controllers'));
+
+        beforeEach(function() {
+            angular.mock.module('mainControllerTest');
+        });
+
+        beforeEach(inject(function($controller, $rootScope) {
+            scope = $rootScope.$new();
+            ctrl = $controller('MainCtrl', {
+                $scope: scope
+            });
+        }));
+
+        it('should be an object', function() {
+            expect(ctrl).toBeObject();
+        });
+
+    });

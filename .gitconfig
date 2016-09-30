@@ -1,6 +1,8 @@
 [core]
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
 	quotepath = false # Fix cyrillic in paths
+	excludesfile = ~/.gitignore
+	pager = less -SFX
 
 [diff]
 	noprefix = true

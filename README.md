@@ -16,6 +16,8 @@ git clone git://github.com/ignovak/dotfiles ~/dotfiles && ~/dotfiles/install.sh
 - tree
 - httpie
 - [rvm](http://rvm.io/)
+- zsh
+    - zsh-syntax-highlighting `ln -s /usr/local/share/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/`
 
 ### Main features
 

@@ -20,6 +20,12 @@ ZSH_THEME=wezm
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     bower               # bower aliases & autocompletion
+
+    # catimg            # print picture to the stdout
+
+    colorize            # colorize command
+                        # needs `sudo easy_install pip && pip install pygmentize`
+
     common-aliases      #
     encode64            # encode64/decode64 commands
     extract             # 'x' alias - swiss knife for archive extracting
@@ -36,6 +42,11 @@ plugins=(
 
     # themes            # zsh theme switcher
     urltools            # urlencode/urldecode commands
+
+    # tmux
+
+    # must be at last position
+    zsh-syntax-highlighting
 )
 
 # OS X Specific plugins
@@ -59,6 +70,12 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 setopt noclobber # >, >! — rewrite safety
+
+# Revert some aliases supplied by plugin "common-aliases"
+unalias rm  # revert "rm -i"
+unalias cp  # revert "cp -i"
+
+alias gl='g lol'
 
 # (http://stackoverflow.com/questions/11456403/stop-shell-wildcard-character-expansion/11456453#11456453)
 # set noglob

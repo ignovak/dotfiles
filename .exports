@@ -5,7 +5,8 @@ export PATH=.bin:$PATH
 export PATH=bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin
 
-export NODE_PATH=./node_modules:$NODE_PATH
+# export NODE_PATH=./node_modules:$NODE_PATH
+export NODE_PATH=
 
 export EDITOR=vim
 export PAGER=less
@@ -24,7 +25,8 @@ export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:st:sup:gs:fg"
+export HISTIGNORE="gst:gd:gl:gbda" # bash
+export HISTORY_IGNORE="gst|gd|gl|gbda" # zsh
 
 # fix sorting against underscores
 export LC_COLLATE=C

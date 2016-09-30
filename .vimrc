@@ -36,8 +36,8 @@ NeoBundle 'Shougo/neosnippet'
 " NeoBundle 'honza/snipmate-snippets'
 
 NeoBundle 'tpope/vim-fugitive'
-" NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
-"             \ 'autoload':{'commands':'Gitv'}}
+NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
+            \ 'autoload':{'commands':'Gitv'}}
 
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/neomru.vim'
@@ -45,13 +45,17 @@ NeoBundle 'Shougo/vimfiler'
 
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'tomtom/tcomment_vim'
+" NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-repeat'
+" NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 " NeoBundle 'vim-scripts/vcscommand.vim'
 NeoBundle 'vim-scripts/tlib'
+
+NeoBundle 'AndrewRadev/splitjoin.vim'
 
 NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': ['html', 'css'] } }
 
@@ -85,6 +89,8 @@ NeoBundle 'wavded/vim-stylus'
 " NeoBundle 'kchmck/vim-coffee-script'
 " NeoBundle 'klen/vim-jsmode'
 " NeoBundle 'mattn/gist-vim'
+
+NeoBundle 'vim-scripts/closetag.vim'
 
 NeoBundle 'http://www.vim.org/scripts/download_script.php?src_id=4316',
       \ { 'type__filename' : 'python.vim', 'script_type' : 'indent' }
@@ -146,6 +152,7 @@ set hlsearch                " Highlight search results
 set ignorecase              " Ignore case in search patterns
 set smartcase               " Override the 'ignorecase' option if the search pattern contains upper case characters
 set incsearch               " While typing a search command, show where the pattern
+set history=1000
 nnoremap <silent> <cr> :nohlsearch<cr><cr>
 
 " Matching characters
@@ -210,6 +217,8 @@ augroup vimrc
   " Filetypes
   autocmd FileType htmldjango set ft=html.htmldjango
 
+  autocmd FileType html set ft=html.javascript
+
   autocmd FileType scss set ft=scss.css
   autocmd FileType stylus set ft=stylus.sass
   autocmd! FileType sass,scss syn cluster sassCssAttributes add=@cssColors
@@ -229,11 +238,14 @@ augroup vimrc
 
   autocmd BufReadPost fugitive://* set bufhidden=delete
 
-  " NeoComplete, Neosnippet
   " Auto close preview window
-  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-  autocmd InsertLeave * NeoSnippetClearMarkers
+  " TODO: [24-04-2016] make sure that this is still needed
+  " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+  " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+  " NeoComplete, Neosnippet
+  " TODO: [24-04-2016] make sure that this is still needed
+  " autocmd InsertLeave * NeoSnippetClearMarkers
 
 augroup END
 
@@ -248,7 +260,7 @@ colorscheme solarized
 " Unite
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'libs/', 'log/'], '\|'))
+call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'bower_components/', 'dist/', 'libs/', 'log/'], '\|'))
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
 call unite#custom#source('neomru/file', 'matchers', ['matcher_project_files', 'matcher_fuzzy'])
 
@@ -283,6 +295,7 @@ elseif executable('ack')
 endif
 
 " vimfiler
+" let g:vimfiler_as_default_explorer = 1
 call vimfiler#custom#profile('default', 'context', {
      \ 'safe' : 0
      \ })
@@ -291,10 +304,11 @@ let g:vimfiler_ignore_pattern = []
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
-nmap <silent> <Bs> :VimFiler<CR>
-nmap <silent> <leader>f :VimFiler -find<CR>
+nmap <silent> <Bs> :VimFiler -simple<CR>
+nmap <silent> <leader>f :VimFiler -simple -find<CR>
 
 let g:vimshell_interactive_update_time = 500
+let g:vimshell_disable_escape_highlight = 1
 nnoremap <silent><leader>h :VimShell<CR>
 
 " fugitive
@@ -323,6 +337,8 @@ nnoremap Q <c-w>s:bp<cr><c-w>j:bd<cr>
 nnoremap <leader>e :e <c-r>=expand("%:h")<cr>/
 nnoremap <leader>d :diffsplit <c-r>=expand("%:h")<cr>/
 cmap <leader>e <c-r>=expand("%:h")<cr>/
+
+cnoremap <c-a> <c-b>
 
 " Neocomplete
 " Disable AutoComplPop.
@@ -505,3 +521,7 @@ endfunction
 " Regexp notes
 " /text1\(text2\)\@= 'text1' followed by 'text2'
 " /\(text1\)\@<=text2  'text2' preceded with 'text1'
+"
+" Unique characters
+" /^((.)(?!.*\2))*$/
+" /^(?!.*(.).*\1)/
