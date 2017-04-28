@@ -7,8 +7,8 @@ snippet ec
 snippet <?e
 	<?php echo ${1} ?>
 # this one is for php5.4
-snippet <?=
-	<?=${1}?>
+snippet =
+	<?= ${1} ?>
 snippet ns
 	namespace ${1:Foo\Bar\Baz};
 	${2}
@@ -316,7 +316,9 @@ snippet pdd
 snippet vd
 	var_dump(${1});
 snippet vdd
-	var_dump(${1}); die(${2:});
+	var_dump(${1}); die();
+snippet jed
+	echo '<pre>' . json_encode(${1}, JSON_PRETTY_PRINT) . '</pre>'; die();
 snippet http_redirect
 	header ("HTTP/1.1 301 Moved Permanently"); 
 	header ("Location: ".URL); 

@@ -914,16 +914,12 @@ snippet lgrad
 											color-stop(.5, #aaa)
 											);
 snippet rotate
-	-webkit-transform: rotate(120deg);
+	transform: rotate(${1}deg);
 snippet scale
-	-webkit-transform: scale${1:X}(${2:1});
-	-moz-transform: scale$1($2);
-	-ms-transform: scale$1($2);
-	-o-transform: scale$1($2);
-	transform: scale$1($2);${3}
+	transform: scale(${1});
 snippet trans
-	-moz-transition: ;
-	-webkit-transition: ;
+	transform: ${1}(${2});
+snippet transi
 	transition: ${1:all} ${2:0.3s} ease-in-out;
 snippet posa
 	position: absolute;

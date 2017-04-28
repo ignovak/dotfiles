@@ -69,7 +69,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-setopt noclobber # >, >! — rewrite safety
+# setopt noclobber # >, >! — rewrite safety
 
 # Revert some aliases supplied by plugin "common-aliases"
 unalias rm  # revert "rm -i"

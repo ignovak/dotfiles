@@ -60,15 +60,9 @@ snippet doct5
 	<!DOCTYPE html>
 snippet html
 	<!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<meta charset="utf-8">
-			<title>${1:title}</title>
-		</head>
-		<body>
-			${2}
-		</body>
-	</html>
+	<meta charset="utf-8">
+	<title>${1:title}</title>
+	${2}
 snippet a
 	<a href="${1}">${2}</a>
 snippet a.
@@ -673,3 +667,11 @@ snippet panel
             ${1}
         </div>
     </div>
+
+snippet =
+options word
+    <?= ${1} ?>
+
+snippet trans
+options word
+    <?= $this->translate('${1}') ?>

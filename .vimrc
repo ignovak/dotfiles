@@ -92,8 +92,11 @@ NeoBundle 'wavded/vim-stylus'
 
 NeoBundle 'vim-scripts/closetag.vim'
 
-NeoBundle 'http://www.vim.org/scripts/download_script.php?src_id=4316',
+NeoBundle 'https://www.vim.org/scripts/download_script.php?src_id=4316',
       \ { 'type__filename' : 'python.vim', 'script_type' : 'indent' }
+
+NeoBundle 'editorconfig/editorconfig-vim'
+
 " NeoBundle 'davidhalter/jedi-vim'
 
 " END BUNDLES }}}
@@ -188,7 +191,6 @@ endif
 set backspace=indent,eol,start " Allow backspace to remove indents, newlines and old tex"
 " set virtualedit=block
 set pastetoggle=<leader>p
-set iskeyword+=-
 set nobackup
 set nowritebackup
 set noswapfile
@@ -219,18 +221,23 @@ augroup vimrc
 
   autocmd FileType html set ft=html.javascript
 
-  autocmd FileType scss set ft=scss.css
+  " autocmd FileType scss set ft=scss.css
   autocmd FileType stylus set ft=stylus.sass
   autocmd! FileType sass,scss syn cluster sassCssAttributes add=@cssColors
+
+  autocmd FileType html,css,scss,javascript set iskeyword+=-
+  autocmd FileType php set iskeyword-=-
 
   autocmd BufRead,BufNewFile *.json set ft=javascript
   " autocmd BufRead,BufNewFile *.json set equalprg=python\ -mjson.tool
   autocmd BufRead,BufNewFile *.js set ft=javascript.javascript-jquery
 
   autocmd BufRead,BufNewFile *.less set ft=less.css
+  autocmd BufRead,BufNewFile *.scss set ft=scss.css
 
   autocmd BufRead,BufNewFile *.plaintex set ft=plaintex.tex
 
+  autocmd BufRead,BufNewFile *.phtml set ft=html
   autocmd BufRead,BufNewFile *.html nmap <leader>o :!open %<cr>
 
   " Avoid syntax-highlighting for files larger than 10MB
@@ -286,12 +293,12 @@ if executable('ag')
     let g:unite_source_grep_command='ag'
     let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden -S'
     let g:unite_source_grep_recursive_opt=''
-    let g:unite_source_grep_search_word_highlight = 1
+    " let g:unite_source_grep_search_word_highlight = 1
 elseif executable('ack')
     let g:unite_source_grep_command='ack'
     let g:unite_source_grep_default_opts='--no-group --no-color'
     let g:unite_source_grep_recursive_opt=''
-    let g:unite_source_grep_search_word_highlight = 1
+    " let g:unite_source_grep_search_word_highlight = 1
 endif
 
 " vimfiler
@@ -312,10 +319,13 @@ let g:vimshell_disable_escape_highlight = 1
 nnoremap <silent><leader>h :VimShell<CR>
 
 " fugitive
-nmap <silent> <leader>b :.Gblame<cr>
+nmap <silent> <leader>b :Gblame<cr>
 vmap <silent> <leader>b :Gblame<cr>
 nmap <silent> <leader>g :Gstatus<cr>
 nmap <silent> <leader>w :Gwrite<cr>
+
+" gitv
+nmap <leader>gv :Gitv origin/deployed <c-r>=expand("%")<cr><cr>
 
 " delimitMate
 let delimitMate_matchpairs = '(:),[:],{:}'
