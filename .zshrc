@@ -52,7 +52,6 @@ plugins=(
 # OS X Specific plugins
 if [ $IS_OSX ]; then
     plugins=($plugins
-        brew                #
         osx                 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#osx
         copyfile            # copies selected file content to clipboard
     )
@@ -68,8 +67,6 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
-# setopt noclobber # >, >! — rewrite safety
 
 # Revert some aliases supplied by plugin "common-aliases"
 unalias rm  # revert "rm -i"
@@ -100,3 +97,16 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# Seems to be Amazon related
+# TODO: figure out why I need this
+PATH="/Users/novakin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PATH="/Users/novakin/Library/Python/3.6/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/novakin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/novakin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/novakin/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/novakin/perl5"; export PERL_MM_OPT;
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+eval "$(jenv init -)"

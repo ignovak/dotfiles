@@ -156,14 +156,21 @@ snippet package
         "private": true
     }
 snippet xhr
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '${1}', true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4)
-            console.log(xhr);
-        callback(xhr.responseText, xhr.status);
-    }
-    xhr.send();
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.addEventListener('load', _ => resolve(xhr.response));
+      xhr.send();
+    });
+
+snippet jsonp
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      const callback = 'callback' + +new Date + (Math.random() * 1000).toFixed();
+      script.src = url + '?callback=' + callback;
+      window[callback] = _ => resolve(_);
+      document.body.appendChild(script);
+    });
 
 snippet jshint
     /* jshint ${1:indent}: false */
@@ -301,3 +308,8 @@ snippet globals
         document.body.removeChild(i);
     })()
 
+snippet con
+    constructor(props) {
+        super(props);
+        ${0}
+    }

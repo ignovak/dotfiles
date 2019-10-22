@@ -13,25 +13,29 @@ done
 
 mkdir -p ~/.config/git/
 touch ~/.config/git/config
-git config -f ~/.config/git/config user.name `git config user.name`
-git config -f ~/.config/git/config user.email `git config user.email`
+git config -f ~/.config/git/config user.name "`git config user.name`"
+git config -f ~/.config/git/config user.email "`git config user.email`"
 if [ -f ~/.gitconfig ]; then
     mv ~/.gitconfig ~/.gitconfig.bk
-    echo Warning: ~/.gitconfig is backed up with ~/.gitconfig.bk and replaced with a symlink to ~/$PWD/.gitconfig
+    echo Warning: ~/.gitconfig is backed up with ~/.gitconfig.bk and replaced with a symlink to $PWD/.gitconfig
     echo Use diff ~/.gitconfig.bk ~/.gitconfig in order to see check changes
     echo Use ~/.config/git/config for personal git settings, i.e. name or email
 fi
-ln -s ~/$PWD/.gitconfig ~/.gitconfig
+ln -s $PWD/.gitconfig ~/.gitconfig
 
 source ~/.profile
 
-echo Fetch/update neobundle.vim
-rm -rf ~/.vim/bundle/neobundle.vim
-curl https://codeload.github.com/Shougo/neobundle.vim/tar.gz/master > neobundle.tar.gz
-mkdir -p .vim/bundle/
-tar xf neobundle.tar.gz
-mv neobundle.vim-master .vim/bundle/neobundle.vim
-rm neobundle.tar.gz
+# echo Fetch/update neobundle.vim
+# rm -rf ~/.vim/bundle/neobundle.vim
+# curl https://codeload.github.com/Shougo/neobundle.vim/tar.gz/master > neobundle.tar.gz
+# mkdir -p .vim/bundle/
+# tar xf neobundle.tar.gz
+# mv neobundle.vim-master .vim/bundle/neobundle.vim
+# rm neobundle.tar.gz
+# echo Done
+
+echo Fetch dein.vim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | xargs -I{} -c {} ~/.cache/dein
 echo Done
 
 which zsh > /dev/null || exit

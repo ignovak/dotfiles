@@ -144,9 +144,9 @@ set autoindent              " copy indent from previous line
 set smartindent             " enable nice indent
 set expandtab               " tab with spaces
 set smarttab                " indent using shiftwidth"
-set shiftwidth=4            " number of spaces to use for each step of indent
-set tabstop=4
-set softtabstop=4           " tab like 4 spaces
+set shiftwidth=2            " number of spaces to use for each step of indent
+set tabstop=2
+set softtabstop=2           " tab like 2 spaces
 set shiftround              " drop unused spaces
 
 " Search options
@@ -164,7 +164,7 @@ set matchpairs+=<:>         " Make < and > match as well
 
 " Localization
 set langmenu=none            " Always use english menu
-set keymap=russian-jcukenwin " Alternative keymap
+" set keymap=russian-jcukenwin " Alternative keymap
 highlight lCursor guifg=NONE guibg=Cyan
 set iminsert=0               " English by default
 set imsearch=-1              " Search keymap from insert mode
@@ -195,6 +195,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 set noeol
+set nofixendofline
 
 set diffopt=filler
 set diffopt+=vertical
@@ -325,7 +326,7 @@ nmap <silent> <leader>g :Gstatus<cr>
 nmap <silent> <leader>w :Gwrite<cr>
 
 " gitv
-nmap <leader>gv :Gitv origin/deployed <c-r>=expand("%")<cr><cr>
+nmap <leader>gv :Gitv origin/mainline <c-r>=expand("%")<cr><cr>
 
 " delimitMate
 let delimitMate_matchpairs = '(:),[:],{:}'
@@ -535,3 +536,5 @@ endfunction
 " Unique characters
 " /^((.)(?!.*\2))*$/
 " /^(?!.*(.).*\1)/
+
+set nomodeline " https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md

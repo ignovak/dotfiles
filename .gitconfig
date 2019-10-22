@@ -1,8 +1,9 @@
 [core]
 	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol,space-before-tab
 	quotepath = false # Fix cyrillic in paths
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/novakin/.config/git/excludes
 	pager = less -SFX
+	editor = vim
 
 [diff]
 	noprefix = true
@@ -19,7 +20,7 @@
 	trustExitCode = true
 
 [mergetool "splice"]
-	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	cmd = "$EDITOR -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
 	trustExitCode = true
 
 [difftool "ws"]
@@ -81,6 +82,7 @@
 
 	# Find merge commit. Usage: `git fm 0c23f92`.
 	fm = "!sh -c 'git show `git rev-list --ancestry-path $0..dev --merges | tail -f`'"
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 
 [tag]
 	sort = version:refname
@@ -100,3 +102,9 @@
 
 [pull]
 	rebase = true
+[user]
+	email = novakin@amazon.com
+	name = Igor Novak
+[amazon]
+	append-cr-url = true
+	pull-request-by-default = true
