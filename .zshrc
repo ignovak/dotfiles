@@ -100,13 +100,13 @@ bindkey '^Z' fancy-ctrl-z
 
 # Seems to be Amazon related
 # TODO: figure out why I need this
-PATH="/Users/novakin/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PATH="/Users/novakin/Library/Python/3.6/bin${PATH:+:${PATH}}"; export PATH;
+# export PATH=~/perl5/bin:$PATH
+# export PATH=~/Python/3.6/bin:$PATH
 PERL5LIB="/Users/novakin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/novakin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/novakin/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/novakin/perl5"; export PERL_MM_OPT;
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH=~/.yarn/bin:~/.config/yarn/global/node_modules/.bin:$PATH
 
 eval "$(jenv init -)"

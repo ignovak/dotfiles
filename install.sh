@@ -34,9 +34,15 @@ source ~/.profile
 # rm neobundle.tar.gz
 # echo Done
 
-echo Fetch dein.vim
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | xargs -I{} -c {} ~/.cache/dein
+echo Install dein.vim
+pip3 install --user pynvim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | sh /dev/stdin ~/.cache/dein
 echo Done
+
+# brew install brew-cask
+# brew install the_silver_searcher
+# brew install tldr
+# brew install tree
 
 which zsh > /dev/null || exit
 

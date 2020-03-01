@@ -313,3 +313,7 @@ snippet con
         super(props);
         ${0}
     }
+
+snippet html
+    let i = 0
+    console.log(container.innerHTML.replace(/<\/?/g, _ => '\n' + ' '.repeat(_ == '<' ? ++i : --i) + _))

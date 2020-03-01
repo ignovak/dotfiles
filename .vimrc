@@ -1,115 +1,102 @@
 scriptencoding utf-8
 
-set nocompatible
-
-" NEOBUNDLE {{{ ===============================================================
-
-filetype off             " Turn off filetype plugins before bundles init
-
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible
 endif
 
-let g:neobundle#types#git#clone_depth = 1
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-" BUNDLES (plugins administrated by NeoBundle) {{{
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/defx.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  let g:deoplete#enable_at_startup = 1
 
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \     'mac' : 'make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak',
-            \    },
-            \ }
+  " TODO: Check other completion sources
+  " https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
+  call dein#add('carlitux/deoplete-ternjs', {'build': 'npm install -g tern'})
 
-NeoBundle 'Shougo/unite.vim'
+  call dein#add('Shougo/neosnippet.vim')
 
-if has('lua')
-  NeoBundle 'Shougo/neocomplete'
-else
-  NeoBundle 'Shougo/neocomplcache'
+  call dein#add('Shougo/denite.nvim')
+
+  " NeoBundle 'Shougo/neosnippet-snippets'
+  " NeoBundle 'honza/vim-snippets'
+
+  call dein#add('tpope/vim-fugitive')
+  " NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
+  "             \ 'autoload':{'commands':'Gitv'}}
+
+  " NeoBundle 'Shougo/vimshell' " TODO: deol.nvim
+  " NeoBundle 'Shougo/neomru.vim'
+
+  " NeoBundle 'jpalardy/vim-slime'
+  call dein#add('Raimondi/delimitMate')
+  call dein#add('tomtom/tcomment_vim')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-unimpaired')
+  " NeoBundle 'tpope/vim-endwise'
+  call dein#add('tpope/vim-repeat')
+  " NeoBundle 'tpope/vim-sleuth'
+  " NeoBundle 'vim-scripts/tlib'
+
+  " NeoBundle 'AndrewRadev/splitjoin.vim'
+
+  " NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': ['html', 'css'] } }
+
+  " NeoBundle 'gregsexton/MatchTag'
+  " NeoBundle 'skammer/vim-css-color'
+  " NeoBundle 'hail2u/vim-css3-syntax'
+  " NeoBundle 'ignovak/vim-web-indent'
+  " NeoBundle 'walm/jshint.vim'
+
+  " NeoBundle 'ignovak/vim-translator'
+
+  call dein#add('ConradIrwin/vim-bracketed-paste')
+
+  " NeoBundle 'ujihisa/unite-colorscheme'
+
+  " NeoBundle 'vim-speeddating'
+
+  " NeoBundle 'hokaccha/vim-html5validator'
+
+  " CSS/LESS
+  " JavaScript
+  " NeoBundle 'pangloss/vim-javascript'
+  " NeoBundle 'wavded/vim-stylus'
+  " JSON
+  " NeoBundle 'leshill/vim-json'
+
+  " NeoBundle 'vim-scripts/closetag.vim'
+
+  " NeoBundle 'https://www.vim.org/scripts/download_script.php?src_id=4316',
+  "       \ { 'type__filename' : 'python.vim', 'script_type' : 'indent' }
+
+  " NeoBundle 'editorconfig/editorconfig-vim'
+
+  " NeoBundle 'davidhalter/jedi-vim'
+
+  call dein#end()
+  call dein#save_state()
 endif
-NeoBundle 'Shougo/neosnippet'
-" NeoBundle 'Shougo/neosnippet-snippets'
-" NeoBundle 'honza/snipmate-snippets'
-
-NeoBundle 'tpope/vim-fugitive'
-NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
-            \ 'autoload':{'commands':'Gitv'}}
-
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimfiler'
-
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'Raimondi/delimitMate'
-" NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-repeat'
-" NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
-" NeoBundle 'vim-scripts/vcscommand.vim'
-NeoBundle 'vim-scripts/tlib'
-
-NeoBundle 'AndrewRadev/splitjoin.vim'
-
-NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': ['html', 'css'] } }
-
-NeoBundle 'gregsexton/MatchTag'
-" NeoBundle 'skammer/vim-css-color'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'ignovak/vim-web-indent'
-" NeoBundle 'walm/jshint.vim'
-
-NeoBundle 'ignovak/vim-translator'
-
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
-
-" NeoBundle 'ujihisa/unite-colorscheme'
-
-" NeoBundle 'vim-speeddating'
-
-" HTML/HAML
-" NeoBundle 'hokaccha/vim-html5validator'
-
-" CSS/LESS
-" JavaScript
-" NeoBundle 'pangloss/vim-javascript'
-" NeoBundle 'itspriddle/vim-jquery'
-NeoBundle 'wavded/vim-stylus'
-" JSON
-" NeoBundle 'leshill/vim-json'
-
-" NeoBundle 'tpope/vim-rails'
-" NeoBundle 'tpope/vim-haml'
-" NeoBundle 'kchmck/vim-coffee-script'
-" NeoBundle 'klen/vim-jsmode'
-" NeoBundle 'mattn/gist-vim'
-
-NeoBundle 'vim-scripts/closetag.vim'
-
-NeoBundle 'https://www.vim.org/scripts/download_script.php?src_id=4316',
-      \ { 'type__filename' : 'python.vim', 'script_type' : 'indent' }
-
-NeoBundle 'editorconfig/editorconfig-vim'
-
-" NeoBundle 'davidhalter/jedi-vim'
-
-" END BUNDLES }}}
-
-call neobundle#end()
 
 filetype plugin indent on
+syntax enable
 
-NeoBundleCheck
+if dein#check_install()
+  call dein#install()
+endif
+"End dein Scripts-------------------------
 
-" }}}
-
-syntax on
+let g:deoplete#sources#ternjs#filetypes = ['jsx', 'vue']
 
 " General options
 set exrc secure             " Enable per-directory .vimrc files and disable unsafe commands in them
@@ -246,15 +233,6 @@ augroup vimrc
 
   autocmd BufReadPost fugitive://* set bufhidden=delete
 
-  " Auto close preview window
-  " TODO: [24-04-2016] make sure that this is still needed
-  " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-  " autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-  " NeoComplete, Neosnippet
-  " TODO: [24-04-2016] make sure that this is still needed
-  " autocmd InsertLeave * NeoSnippetClearMarkers
-
 augroup END
 
 set t_Co=256
@@ -265,59 +243,120 @@ let g:solarized_termtrans=1
 set background=light
 colorscheme solarized
 
-" Unite
+" Denite
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'bower_components/', 'dist/', 'libs/', 'log/'], '\|'))
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
-call unite#custom#source('neomru/file', 'matchers', ['matcher_project_files', 'matcher_fuzzy'])
+" TODO
+" https://gist.github.com/dlants/8d7fadfb691b511f1376ba437a9aaea9
+" https://www.freecodecamp.org/news/a-guide-to-modern-web-development-with-neo-vim-333f7efbf8e2/
+" https://github.com/ctaylo21/jarvis/blob/master/config/nvim/init.vim#L58
+call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '--ignore', 'build/', '-g', ''])
+call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-u', '-g', ''])
 
-let g:unite_source_buffer_time_format = ''
-" let g:unite_enable_start_insert = 1
-" let g:unite_split_rule = "botright"
-" let g:unite_force_overwrite_statusline = 0
-" let g:unite_winheight = 10
-" let g:unite_candidate_icon="▷"
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+" call denite#custom#source('file_rec', 'sorters', ['sorter_sublime'])
+call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+      \ [ '.git/', '.ropeproject/', '__pycache__/*', '*.pyc', 'node_modules/',
+      \   'dist/', 'log/', 'tmp/',
+      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', '*.png'])
 
 nmap <space> [unite]
 nnoremap [unite] <nop>
 
-nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
-nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -start-insert -buffer-name=files neomru/file file_rec/async<cr>
-nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
-nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-nnoremap <silent> [unite]* :<C-u>UniteWithCursorWord -no-quit -buffer-name=search grep:.<cr>
-nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-" nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+" nnoremap <silent> [unite]f :<C-u>Denite -toggle -auto-resize -start-insert -buffer-name=files neomru/file file_rec/async<cr>
+nnoremap <silent> [unite]p :<C-u>Denite -start-filter file/rec<cr>
+nnoremap <silent> [unite]f :<C-u>Denite -start-filter file_rec<cr>
+nnoremap <silent> [unite]b :<C-u>Denite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]* :<C-u>DeniteCursorWord grep:.<cr>
+nnoremap <silent> [unite]/ :<C-u>Denite grep:.<cr>
 
-if executable('ag')
-    let g:unite_source_grep_command='ag'
-    let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden -S'
-    let g:unite_source_grep_recursive_opt=''
-    " let g:unite_source_grep_search_word_highlight = 1
-elseif executable('ack')
-    let g:unite_source_grep_command='ack'
-    let g:unite_source_grep_default_opts='--no-group --no-color'
-    let g:unite_source_grep_recursive_opt=''
-    " let g:unite_source_grep_search_word_highlight = 1
-endif
+" " Unite
 
-" vimfiler
-" let g:vimfiler_as_default_explorer = 1
-call vimfiler#custom#profile('default', 'context', {
-     \ 'safe' : 0
-     \ })
-let g:vimfiler_ignore_pattern = []
-" Like Textmate icons.
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-nmap <silent> <Bs> :VimFiler -simple<CR>
-nmap <silent> <leader>f :VimFiler -simple -find<CR>
+"     let g:unite_source_grep_command='ag'
+"     let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden -S'
+"     let g:unite_source_grep_recursive_opt=''
+"     " let g:unite_source_grep_search_word_highlight = 1
 
-let g:vimshell_interactive_update_time = 500
-let g:vimshell_disable_escape_highlight = 1
-nnoremap <silent><leader>h :VimShell<CR>
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#custom#source('file_rec,file_rec/async,grep', 'ignore_pattern', join(['\.git/', 'tmp/', 'bundle/', 'node_modules/', 'bower_components/', 'dist/', 'libs/', 'log/'], '\|'))
+" call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 10000)
+" call unite#custom#source('neomru/file', 'matchers', ['matcher_project_files', 'matcher_fuzzy'])
+
+" let g:unite_source_buffer_time_format = ''
+" " let g:unite_enable_start_insert = 1
+" " let g:unite_split_rule = "botright"
+" " let g:unite_force_overwrite_statusline = 0
+" " let g:unite_winheight = 10
+" " let g:unite_candidate_icon="▷"
+
+" Defx
+nnoremap <silent> <Bs> :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
+nnoremap <silent> <LocalLeader>f :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>    defx#do_action('drop')
+  nnoremap <silent><buffer><expr> c       defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m       defx#do_action('move')
+  nnoremap <silent><buffer><expr> p       defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l       defx#do_action('open')
+  nnoremap <silent><buffer><expr> E       defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P       defx#do_action('open', 'pedit')
+  nnoremap <silent><buffer><expr> o       defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('drop')
+  nnoremap <silent><buffer><expr> K       defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N       defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M       defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C       defx#do_action('toggle_columns', 'mark:indent:icon:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S       defx#do_action('toggle_sort', 'time')
+  nnoremap <silent><buffer><expr> d       defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r       defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !       defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x       defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy      defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .       defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;       defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h       defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~       defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q       defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Bs>    defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *       defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j       line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k       line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>   defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>   defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd      defx#do_action('change_vim_cwd')
+endfunction
+
+call defx#custom#column('icon', {
+      \ 'directory_icon': '▸',
+      \ 'opened_icon': '▾',
+      \ 'root_icon': ' ',
+      \ })
+
+" let g:vimshell_interactive_update_time = 500
+" let g:vimshell_disable_escape_highlight = 1
+" nnoremap <silent><leader>h :VimShell<CR>
 
 " fugitive
 nmap <silent> <leader>b :Gblame<cr>
@@ -328,8 +367,6 @@ nmap <silent> <leader>w :Gwrite<cr>
 " gitv
 nmap <leader>gv :Gitv origin/mainline <c-r>=expand("%")<cr><cr>
 
-" delimitMate
-let delimitMate_matchpairs = '(:),[:],{:}'
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 
@@ -350,113 +387,6 @@ nnoremap <leader>d :diffsplit <c-r>=expand("%:h")<cr>/
 cmap <leader>e <c-r>=expand("%:h")<cr>/
 
 cnoremap <c-a> <c-b>
-
-" Neocomplete
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-
-" " Define dictionary.
-" let g:neocomplete#sources#dictionary#dictionaries = {
-"     \ 'default' : '',
-"     \ 'vimshell' : $HOME.'/.vimshell_hist',
-"     \ 'scheme' : $HOME.'/.gosh_completions'
-"     \ }
-
-if has('lua')
-  " Use neocomplete.
-  " let g:neocomplete#enable_at_startup = 1
-  " Use smartcase.
-  " let g:neocomplete#enable_smart_case = 1
-  " Set minimum syntax keyword length.
-  " let g:neocomplete#sources#syntax#min_keyword_length = 3
-  " let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-  " Define keyword.
-  if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-  endif
-  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-  " Plugin key-mappings.
-  inoremap <expr><C-g>     neocomplete#undo_completion()
-  inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-  " Recommended key-mappings.
-  " <CR>: close popup and save indent.
-  " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  " function! s:my_cr_function()
-  "   return neocomplete#close_popup() . "\<CR>"
-  "   " For no inserting <CR> key.
-  "   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-  " endfunction
-  " <TAB>: completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y>  neocomplete#close_popup()
-  inoremap <expr><C-e>  neocomplete#cancel_popup()
-  " Close popup by <Space>.
-  "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-  " AutoComplPop like behavior.
-  "let g:neocomplete#enable_auto_select = 1
-
-  " Shell like behavior(not recommended).
-  "set completeopt+=longest
-  "let g:neocomplete#enable_auto_select = 1
-  "let g:neocomplete#disable_auto_complete = 1
-  "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-else
-  " Use neocomplcache.
-  " let g:neocomplcache_enable_at_startup = 1
-  " Use smartcase.
-  " let g:neocomplcache_enable_smart_case = 1
-  " Set minimum syntax keyword length.
-  " let g:neocomplcache_min_syntax_length = 3
-  " let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-  " Define keyword.
-  if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-  endif
-  let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-  " Plugin key-mappings.
-  inoremap <expr><C-g>     neocomplcache#undo_completion()
-  inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-  " Recommended key-mappings.
-  " <CR>: close popup and save indent.
-  " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  " function! s:my_cr_function()
-  "   return neocomplcache#smart_close_popup() . "\<CR>"
-  "   " For no inserting <CR> key.
-  "   "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-  " endfunction
-  " <TAB>: completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y>  neocomplcache#close_popup()
-  inoremap <expr><C-e>  neocomplcache#cancel_popup()
-  " Close popup by <Space>.
-  "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-
-  " AutoComplPop like behavior.
-  "let g:neocomplcache_enable_auto_select = 1
-
-  " Shell like behavior(not recommended).
-  "set completeopt+=longest
-  "let g:neocomplcache_enable_auto_select = 1
-  "let g:neocomplcache_disable_auto_complete = 1
-  "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-endif
-
-
 
 " Neosnippet
 " Plugin key-mappings.
@@ -483,6 +413,7 @@ let g:neosnippet#disable_runtime_snippets = {
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#enable_completed_snippet = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/snippets'
@@ -493,8 +424,6 @@ nnoremap <silent> <leader>vp :vsp <c-r>=expand("%:h")<cr>/
 
 " Helpers for snipmate
 so ~/.vim/snippets/support_functions.vim
-
-
 
 " Slime-vim
 "
@@ -514,10 +443,6 @@ let g:goog_user_conf = {
             \ 'langpair': 'en|ru',
             \ 'v_key': 'T'
             \ }
-
-if has('gui_running')
-    source ~/.vim/.gvimrc
-endif
 
 function! SQLUpperCase()
     %s:\<analyze\>\|\<and\>\|\<as\>\|\<by\>\|\<desc\>\|\<exists\>\|\<explain\>\|\<from\>\|\<group\>\|\<in\>\|\<insert\>\|\<intersect\>\|\<into\>\|\<join\>\|\<limit\>\|\<not\>\|\<on\>\|\<order\>\|\<select\>\|\<set\>\|\<update\>\|\<where\>:\U&:i
